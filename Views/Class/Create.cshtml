@@ -1,0 +1,49 @@
+﻿@model AdaptiveLearningFinal.Models.Course
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Course</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClassID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ClassID)
+            @Html.ValidationMessageFor(model => model.ClassID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClassName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ClassName)
+            @Html.ValidationMessageFor(model => model.ClassName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ClassLevel)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ClassLevel)
+            @Html.ValidationMessageFor(model => model.ClassLevel)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

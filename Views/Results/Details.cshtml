@@ -1,0 +1,30 @@
+﻿@model AdaptiveLearningFinal.Models.CourseResult
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>CourseResult</legend>
+
+    <div class="display-label">CourseQuestion</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CourseQuestion.QuestionAnswer)
+    </div>
+
+    <div class="display-label">User</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User.UserName)
+    </div>
+
+    <div class="display-label">Correct</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Correct)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CourseResultID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

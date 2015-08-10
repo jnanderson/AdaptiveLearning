@@ -1,0 +1,35 @@
+﻿@model AdaptiveLearningFinal.Models.UsersInRole
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>UsersInRole</legend>
+
+    <div class="display-label">User</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User.UserName)
+    </div>
+
+    <div class="display-label">Role</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Role.RoleName)
+    </div>
+
+    <div class="display-label">SetDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SetDate)
+    </div>
+
+    <div class="display-label">UserRoleID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserRoleID)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

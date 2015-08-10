@@ -1,0 +1,45 @@
+﻿@model AdaptiveLearningFinal.Models.CourseQuestion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>CourseQuestion</legend>
+
+    <div class="display-label">QuestionID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuestionID)
+    </div>
+
+    <div class="display-label">QuestionLevel</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuestionLevel)
+    </div>
+
+    <div class="display-label">QuestionAnswer</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuestionAnswer)
+    </div>
+
+    <div class="display-label">QuestionExplanation</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuestionExplanation)
+    </div>
+
+    <div class="display-label">Question</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Question)
+    </div>
+
+    <div class="display-label">Course</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Course.ClassName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

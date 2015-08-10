@@ -1,0 +1,925 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AdaptiveLearningModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="AdaptiveLearningModelStoreContainer">
+          <EntitySet Name="Applications" EntityType="AdaptiveLearningModel.Store.Applications" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Course" EntityType="AdaptiveLearningModel.Store.Course" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CourseQuestion" EntityType="AdaptiveLearningModel.Store.CourseQuestion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CourseResult" EntityType="AdaptiveLearningModel.Store.CourseResult" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EvaluationResults" EntityType="AdaptiveLearningModel.Store.EvaluationResults" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EvaluationTest" EntityType="AdaptiveLearningModel.Store.EvaluationTest" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LearningStyle" EntityType="AdaptiveLearningModel.Store.LearningStyle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Memberships" EntityType="AdaptiveLearningModel.Store.Memberships" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Profiles" EntityType="AdaptiveLearningModel.Store.Profiles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Roles" EntityType="AdaptiveLearningModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="AdaptiveLearningModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UsersInRoles" EntityType="AdaptiveLearningModel.Store.UsersInRoles" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_CourseQuestion_Class" Association="AdaptiveLearningModel.Store.FK_CourseQuestion_Class">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CourseQuestion" EntitySet="CourseQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseResult_CourseQuestion" Association="AdaptiveLearningModel.Store.FK_CourseResult_CourseQuestion">
+            <End Role="CourseQuestion" EntitySet="CourseQuestion" />
+            <End Role="CourseResult" EntitySet="CourseResult" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseResult_Users" Association="AdaptiveLearningModel.Store.FK_CourseResult_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CourseResult" EntitySet="CourseResult" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EvaluationResults_EvaluationTest" Association="AdaptiveLearningModel.Store.FK_EvaluationResults_EvaluationTest">
+            <End Role="EvaluationTest" EntitySet="EvaluationTest" />
+            <End Role="EvaluationResults" EntitySet="EvaluationResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EvaluationResults_Users" Association="AdaptiveLearningModel.Store.FK_EvaluationResults_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="EvaluationResults" EntitySet="EvaluationResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LearningStyle_Users" Association="AdaptiveLearningModel.Store.FK_LearningStyle_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="LearningStyle" EntitySet="LearningStyle" />
+          </AssociationSet>
+          <AssociationSet Name="MembershipApplication" Association="AdaptiveLearningModel.Store.MembershipApplication">
+            <End Role="Applications" EntitySet="Applications" />
+            <End Role="Memberships" EntitySet="Memberships" />
+          </AssociationSet>
+          <AssociationSet Name="MembershipUser" Association="AdaptiveLearningModel.Store.MembershipUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Memberships" EntitySet="Memberships" />
+          </AssociationSet>
+          <AssociationSet Name="RoleApplication" Association="AdaptiveLearningModel.Store.RoleApplication">
+            <End Role="Applications" EntitySet="Applications" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="UserApplication" Association="AdaptiveLearningModel.Store.UserApplication">
+            <End Role="Applications" EntitySet="Applications" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="UserProfile" Association="AdaptiveLearningModel.Store.UserProfile">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Profiles" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="UsersInRoleRole" Association="AdaptiveLearningModel.Store.UsersInRoleRole">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UsersInRoles" EntitySet="UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="UsersInRoleUser" Association="AdaptiveLearningModel.Store.UsersInRoleUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersInRoles" EntitySet="UsersInRoles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Applications">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationName" Type="nvarchar" Nullable="false" MaxLength="235" />
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ClassName" Type="varchar" MaxLength="255" />
+          <Property Name="ClassLevel" Type="int" />
+        </EntityType>
+        <EntityType Name="CourseQuestion">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+          </Key>
+          <Property Name="QuestionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionLevel" Type="int" />
+          <Property Name="QuestionAnswer" Type="varchar(max)" />
+          <Property Name="QuestionExplanation" Type="varchar(max)" />
+          <Property Name="Question" Type="varchar(max)" />
+          <Property Name="ClassID" Type="int" />
+        </EntityType>
+        <EntityType Name="CourseResult">
+          <Key>
+            <PropertyRef Name="CourseResultID" />
+          </Key>
+          <Property Name="CourseResultID" Type="int" Nullable="false" />
+          <Property Name="QuestionID" Type="int" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="Correct" Type="bit" />
+        </EntityType>
+        <EntityType Name="EvaluationResults">
+          <Key>
+            <PropertyRef Name="ERID" />
+          </Key>
+          <Property Name="ERID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="uniqueidentifier" />
+          <Property Name="EvalAnswerAStrength" Type="int" />
+          <Property Name="EvalAnswerBStrength" Type="int" />
+          <Property Name="EvalAnswerCStrength" Type="int" />
+          <Property Name="EvalAnswerDStrength" Type="int" />
+          <Property Name="EvalQuestionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EvaluationTest">
+          <Key>
+            <PropertyRef Name="EvalQuestionID" />
+          </Key>
+          <Property Name="EvalQuestionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EvalQuestion" Type="varchar(max)" />
+          <Property Name="EvalAnswerA" Type="varchar(max)" />
+          <Property Name="EvalAnswerB" Type="varchar(max)" />
+          <Property Name="EvalAnswerC" Type="varchar(max)" />
+          <Property Name="EvalAnswerD" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="LearningStyle">
+          <Key>
+            <PropertyRef Name="LearningStyleID" />
+          </Key>
+          <Property Name="LearningStyleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LearningType" Type="varchar" MaxLength="50" />
+          <Property Name="LearningStyle" Type="varchar" MaxLength="50" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Memberships">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordFormat" Type="int" Nullable="false" />
+          <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="PasswordQuestion" Type="nvarchar" MaxLength="256" />
+          <Property Name="PasswordAnswer" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
+          <Property Name="LastPasswordChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLockoutDate" Type="datetime" Nullable="false" />
+          <Property Name="FailedPasswordAttemptCount" Type="int" Nullable="false" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="datetime" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="int" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptWindowsStart" Type="datetime" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Profiles">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PropertyNames" Type="nvarchar" Nullable="false" />
+          <Property Name="PropertyValueStrings" Type="nvarchar" Nullable="false" />
+          <Property Name="PropertyValueBinary" Type="image" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsAnonymous" Type="bit" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SetDate" Type="datetime" />
+          <Property Name="UserRoleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="FK_CourseQuestion_Class">
+          <End Role="Course" Type="AdaptiveLearningModel.Store.Course" Multiplicity="0..1" />
+          <End Role="CourseQuestion" Type="AdaptiveLearningModel.Store.CourseQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="CourseQuestion">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseResult_CourseQuestion">
+          <End Role="CourseQuestion" Type="AdaptiveLearningModel.Store.CourseQuestion" Multiplicity="0..1" />
+          <End Role="CourseResult" Type="AdaptiveLearningModel.Store.CourseResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseQuestion">
+              <PropertyRef Name="QuestionID" />
+            </Principal>
+            <Dependent Role="CourseResult">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseResult_Users">
+          <End Role="Users" Type="AdaptiveLearningModel.Store.Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CourseResult" Type="AdaptiveLearningModel.Store.CourseResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="CourseResult">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EvaluationResults_EvaluationTest">
+          <End Role="EvaluationTest" Type="AdaptiveLearningModel.Store.EvaluationTest" Multiplicity="1" />
+          <End Role="EvaluationResults" Type="AdaptiveLearningModel.Store.EvaluationResults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EvaluationTest">
+              <PropertyRef Name="EvalQuestionID" />
+            </Principal>
+            <Dependent Role="EvaluationResults">
+              <PropertyRef Name="EvalQuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EvaluationResults_Users">
+          <End Role="Users" Type="AdaptiveLearningModel.Store.Users" Multiplicity="0..1" />
+          <End Role="EvaluationResults" Type="AdaptiveLearningModel.Store.EvaluationResults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="EvaluationResults">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LearningStyle_Users">
+          <End Role="Users" Type="AdaptiveLearningModel.Store.Users" Multiplicity="0..1" />
+          <End Role="LearningStyle" Type="AdaptiveLearningModel.Store.LearningStyle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="LearningStyle">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MembershipApplication">
+          <End Role="Applications" Type="AdaptiveLearningModel.Store.Applications" Multiplicity="1" />
+          <End Role="Memberships" Type="AdaptiveLearningModel.Store.Memberships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="Memberships">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MembershipUser">
+          <End Role="Users" Type="AdaptiveLearningModel.Store.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Memberships" Type="AdaptiveLearningModel.Store.Memberships" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Memberships">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RoleApplication">
+          <End Role="Applications" Type="AdaptiveLearningModel.Store.Applications" Multiplicity="1" />
+          <End Role="Roles" Type="AdaptiveLearningModel.Store.Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserApplication">
+          <End Role="Applications" Type="AdaptiveLearningModel.Store.Applications" Multiplicity="1" />
+          <End Role="Users" Type="AdaptiveLearningModel.Store.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserProfile">
+          <End Role="Users" Type="AdaptiveLearningModel.Store.Users" Multiplicity="1" />
+          <End Role="Profiles" Type="AdaptiveLearningModel.Store.Profiles" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Profiles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsersInRoleRole">
+          <End Role="Roles" Type="AdaptiveLearningModel.Store.Roles" Multiplicity="1" />
+          <End Role="UsersInRoles" Type="AdaptiveLearningModel.Store.UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsersInRoleUser">
+          <End Role="Users" Type="AdaptiveLearningModel.Store.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersInRoles" Type="AdaptiveLearningModel.Store.UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdaptiveLearningModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="AdaptiveLearningEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Applications" EntityType="AdaptiveLearningModel.Application" />
+          <EntitySet Name="Courses" EntityType="AdaptiveLearningModel.Course" />
+          <EntitySet Name="CourseQuestions" EntityType="AdaptiveLearningModel.CourseQuestion" />
+          <EntitySet Name="CourseResults" EntityType="AdaptiveLearningModel.CourseResult" />
+          <EntitySet Name="EvaluationResults" EntityType="AdaptiveLearningModel.EvaluationResult" />
+          <EntitySet Name="EvaluationTests" EntityType="AdaptiveLearningModel.EvaluationTest" />
+          <EntitySet Name="LearningStyles" EntityType="AdaptiveLearningModel.LearningStyle" />
+          <EntitySet Name="Memberships" EntityType="AdaptiveLearningModel.Membership" />
+          <EntitySet Name="Profiles" EntityType="AdaptiveLearningModel.Profile" />
+          <EntitySet Name="Roles" EntityType="AdaptiveLearningModel.Role" />
+          <EntitySet Name="Users" EntityType="AdaptiveLearningModel.User" />
+          <EntitySet Name="UsersInRoles" EntityType="AdaptiveLearningModel.UsersInRole" />
+          <AssociationSet Name="MembershipApplication" Association="AdaptiveLearningModel.MembershipApplication">
+            <End Role="Applications" EntitySet="Applications" />
+            <End Role="Memberships" EntitySet="Memberships" />
+          </AssociationSet>
+          <AssociationSet Name="RoleApplication" Association="AdaptiveLearningModel.RoleApplication">
+            <End Role="Applications" EntitySet="Applications" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="UserApplication" Association="AdaptiveLearningModel.UserApplication">
+            <End Role="Applications" EntitySet="Applications" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseQuestion_Class" Association="AdaptiveLearningModel.FK_CourseQuestion_Class">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="CourseQuestion" EntitySet="CourseQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseResult_CourseQuestion" Association="AdaptiveLearningModel.FK_CourseResult_CourseQuestion">
+            <End Role="CourseQuestion" EntitySet="CourseQuestions" />
+            <End Role="CourseResult" EntitySet="CourseResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseResult_Users" Association="AdaptiveLearningModel.FK_CourseResult_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CourseResult" EntitySet="CourseResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EvaluationResults_EvaluationTest" Association="AdaptiveLearningModel.FK_EvaluationResults_EvaluationTest">
+            <End Role="EvaluationTest" EntitySet="EvaluationTests" />
+            <End Role="EvaluationResults" EntitySet="EvaluationResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EvaluationResults_Users" Association="AdaptiveLearningModel.FK_EvaluationResults_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="EvaluationResults" EntitySet="EvaluationResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LearningStyle_Users" Association="AdaptiveLearningModel.FK_LearningStyle_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="LearningStyle" EntitySet="LearningStyles" />
+          </AssociationSet>
+          <AssociationSet Name="MembershipUser" Association="AdaptiveLearningModel.MembershipUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Memberships" EntitySet="Memberships" />
+          </AssociationSet>
+          <AssociationSet Name="UserProfile" Association="AdaptiveLearningModel.UserProfile">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Profiles" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="UsersInRoleRole" Association="AdaptiveLearningModel.UsersInRoleRole">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UsersInRoles" EntitySet="UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="UsersInRoleUser" Association="AdaptiveLearningModel.UsersInRoleUser">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersInRoles" EntitySet="UsersInRoles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationName" Type="String" Nullable="false" MaxLength="235" Unicode="true" FixedLength="false" />
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Memberships" Relationship="AdaptiveLearningModel.MembershipApplication" FromRole="Applications" ToRole="Memberships" />
+          <NavigationProperty Name="Roles" Relationship="AdaptiveLearningModel.RoleApplication" FromRole="Applications" ToRole="Roles" />
+          <NavigationProperty Name="Users" Relationship="AdaptiveLearningModel.UserApplication" FromRole="Applications" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ClassLevel" Type="Int32" />
+          <NavigationProperty Name="CourseQuestions" Relationship="AdaptiveLearningModel.FK_CourseQuestion_Class" FromRole="Course" ToRole="CourseQuestion" />
+        </EntityType>
+        <EntityType Name="CourseQuestion">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+          </Key>
+          <Property Name="QuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionLevel" Type="Int32" />
+          <Property Name="QuestionAnswer" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="QuestionExplanation" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Question" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ClassID" Type="Int32" />
+          <NavigationProperty Name="Course" Relationship="AdaptiveLearningModel.FK_CourseQuestion_Class" FromRole="CourseQuestion" ToRole="Course" />
+          <NavigationProperty Name="CourseResults" Relationship="AdaptiveLearningModel.FK_CourseResult_CourseQuestion" FromRole="CourseQuestion" ToRole="CourseResult" />
+        </EntityType>
+        <EntityType Name="CourseResult">
+          <Key>
+            <PropertyRef Name="CourseResultID" />
+          </Key>
+          <Property Name="CourseResultID" Type="Int32" Nullable="false" />
+          <Property Name="QuestionID" Type="Int32" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="Correct" Type="Boolean" />
+          <NavigationProperty Name="CourseQuestion" Relationship="AdaptiveLearningModel.FK_CourseResult_CourseQuestion" FromRole="CourseResult" ToRole="CourseQuestion" />
+          <NavigationProperty Name="User" Relationship="AdaptiveLearningModel.FK_CourseResult_Users" FromRole="CourseResult" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="EvaluationResult">
+          <Key>
+            <PropertyRef Name="ERID" />
+          </Key>
+          <Property Name="ERID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Guid" />
+          <Property Name="EvalAnswerAStrength" Type="Int32" />
+          <Property Name="EvalAnswerBStrength" Type="Int32" />
+          <Property Name="EvalAnswerCStrength" Type="Int32" />
+          <Property Name="EvalAnswerDStrength" Type="Int32" />
+          <Property Name="EvalQuestionID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EvaluationTest" Relationship="AdaptiveLearningModel.FK_EvaluationResults_EvaluationTest" FromRole="EvaluationResults" ToRole="EvaluationTest" />
+          <NavigationProperty Name="User" Relationship="AdaptiveLearningModel.FK_EvaluationResults_Users" FromRole="EvaluationResults" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="EvaluationTest">
+          <Key>
+            <PropertyRef Name="EvalQuestionID" />
+          </Key>
+          <Property Name="EvalQuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EvalQuestion" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="EvalAnswerA" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="EvalAnswerB" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="EvalAnswerC" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="EvalAnswerD" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="EvaluationResults" Relationship="AdaptiveLearningModel.FK_EvaluationResults_EvaluationTest" FromRole="EvaluationTest" ToRole="EvaluationResults" />
+        </EntityType>
+        <EntityType Name="LearningStyle">
+          <Key>
+            <PropertyRef Name="LearningStyleID" />
+          </Key>
+          <Property Name="LearningStyleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LearningType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LearningStyle1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UserId" Type="Guid" />
+          <NavigationProperty Name="User" Relationship="AdaptiveLearningModel.FK_LearningStyle_Users" FromRole="LearningStyle" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordFormat" Type="Int32" Nullable="false" />
+          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordQuestion" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordAnswer" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FailedPasswordAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptWindowsStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Application" Relationship="AdaptiveLearningModel.MembershipApplication" FromRole="Memberships" ToRole="Applications" />
+          <NavigationProperty Name="User" Relationship="AdaptiveLearningModel.MembershipUser" FromRole="Memberships" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="PropertyNames" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="PropertyValueStrings" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="PropertyValueBinary" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="AdaptiveLearningModel.UserProfile" FromRole="Profiles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="RoleId" Type="Guid" Nullable="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Application" Relationship="AdaptiveLearningModel.RoleApplication" FromRole="Roles" ToRole="Applications" />
+          <NavigationProperty Name="UsersInRoles" Relationship="AdaptiveLearningModel.UsersInRoleRole" FromRole="Roles" ToRole="UsersInRoles" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Application" Relationship="AdaptiveLearningModel.UserApplication" FromRole="Users" ToRole="Applications" />
+          <NavigationProperty Name="CourseResults" Relationship="AdaptiveLearningModel.FK_CourseResult_Users" FromRole="Users" ToRole="CourseResult" />
+          <NavigationProperty Name="EvaluationResults" Relationship="AdaptiveLearningModel.FK_EvaluationResults_Users" FromRole="Users" ToRole="EvaluationResults" />
+          <NavigationProperty Name="LearningStyles" Relationship="AdaptiveLearningModel.FK_LearningStyle_Users" FromRole="Users" ToRole="LearningStyle" />
+          <NavigationProperty Name="Membership" Relationship="AdaptiveLearningModel.MembershipUser" FromRole="Users" ToRole="Memberships" />
+          <NavigationProperty Name="Profile" Relationship="AdaptiveLearningModel.UserProfile" FromRole="Users" ToRole="Profiles" />
+          <NavigationProperty Name="UsersInRoles" Relationship="AdaptiveLearningModel.UsersInRoleUser" FromRole="Users" ToRole="UsersInRoles" />
+        </EntityType>
+        <EntityType Name="UsersInRole">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="RoleId" Type="Guid" Nullable="false" />
+          <Property Name="SetDate" Type="DateTime" Precision="3" />
+          <Property Name="UserRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Role" Relationship="AdaptiveLearningModel.UsersInRoleRole" FromRole="UsersInRoles" ToRole="Roles" />
+          <NavigationProperty Name="User" Relationship="AdaptiveLearningModel.UsersInRoleUser" FromRole="UsersInRoles" ToRole="Users" />
+        </EntityType>
+        <Association Name="MembershipApplication">
+          <End Role="Applications" Type="AdaptiveLearningModel.Application" Multiplicity="1" />
+          <End Role="Memberships" Type="AdaptiveLearningModel.Membership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="Memberships">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RoleApplication">
+          <End Role="Applications" Type="AdaptiveLearningModel.Application" Multiplicity="1" />
+          <End Role="Roles" Type="AdaptiveLearningModel.Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="Roles">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserApplication">
+          <End Role="Applications" Type="AdaptiveLearningModel.Application" Multiplicity="1" />
+          <End Role="Users" Type="AdaptiveLearningModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseQuestion_Class">
+          <End Role="Course" Type="AdaptiveLearningModel.Course" Multiplicity="0..1" />
+          <End Role="CourseQuestion" Type="AdaptiveLearningModel.CourseQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="CourseQuestion">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseResult_CourseQuestion">
+          <End Role="CourseQuestion" Type="AdaptiveLearningModel.CourseQuestion" Multiplicity="0..1" />
+          <End Role="CourseResult" Type="AdaptiveLearningModel.CourseResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseQuestion">
+              <PropertyRef Name="QuestionID" />
+            </Principal>
+            <Dependent Role="CourseResult">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseResult_Users">
+          <End Role="Users" Type="AdaptiveLearningModel.User" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CourseResult" Type="AdaptiveLearningModel.CourseResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="CourseResult">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EvaluationResults_EvaluationTest">
+          <End Role="EvaluationTest" Type="AdaptiveLearningModel.EvaluationTest" Multiplicity="1" />
+          <End Role="EvaluationResults" Type="AdaptiveLearningModel.EvaluationResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EvaluationTest">
+              <PropertyRef Name="EvalQuestionID" />
+            </Principal>
+            <Dependent Role="EvaluationResults">
+              <PropertyRef Name="EvalQuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EvaluationResults_Users">
+          <End Role="Users" Type="AdaptiveLearningModel.User" Multiplicity="0..1" />
+          <End Role="EvaluationResults" Type="AdaptiveLearningModel.EvaluationResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="EvaluationResults">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LearningStyle_Users">
+          <End Role="Users" Type="AdaptiveLearningModel.User" Multiplicity="0..1" />
+          <End Role="LearningStyle" Type="AdaptiveLearningModel.LearningStyle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="LearningStyle">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MembershipUser">
+          <End Role="Users" Type="AdaptiveLearningModel.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Memberships" Type="AdaptiveLearningModel.Membership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Memberships">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserProfile">
+          <End Role="Users" Type="AdaptiveLearningModel.User" Multiplicity="1" />
+          <End Role="Profiles" Type="AdaptiveLearningModel.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Profiles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsersInRoleRole">
+          <End Role="Roles" Type="AdaptiveLearningModel.Role" Multiplicity="1" />
+          <End Role="UsersInRoles" Type="AdaptiveLearningModel.UsersInRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsersInRoleUser">
+          <End Role="Users" Type="AdaptiveLearningModel.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersInRoles" Type="AdaptiveLearningModel.UsersInRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdaptiveLearningModelStoreContainer" CdmEntityContainer="AdaptiveLearningEntities">
+          <EntitySetMapping Name="Applications">
+            <EntityTypeMapping TypeName="AdaptiveLearningModel.Application">
+              <MappingFragment StoreEntitySet="Applications">
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="AdaptiveLearningModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="ClassLevel" ColumnName="ClassLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseQuestions">
+            <EntityTypeMapping TypeName="AdaptiveLearningModel.CourseQuestion">
+              <MappingFragment StoreEntitySet="CourseQuestion">
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="QuestionLevel" ColumnName="QuestionLevel" />
+                <ScalarProperty Name="QuestionAnswer" ColumnName="QuestionAnswer" />
+                <ScalarProperty Name="QuestionExplanation" ColumnName="QuestionExplanation" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseResults">
+            <EntityTypeMapping TypeName="AdaptiveLearningModel.CourseResult">
+              <MappingFragment StoreEntitySet="CourseResult">
+                <ScalarProperty Name="CourseResultID" ColumnName="CourseResultID" />
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Correct" ColumnName="Correct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EvaluationResults">
+            <EntityTypeMapping TypeName="AdaptiveLearningModel.EvaluationResult">
+              <MappingFragment StoreEntitySet="EvaluationResults">
+                <ScalarProperty Name="ERID" ColumnName="ERID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EvalAnswerAStrength" ColumnName="EvalAnswerAStrength" />
+                <ScalarProperty Name="EvalAnswerBStrength" ColumnName="EvalAnswerBStrength" />
+                <ScalarProperty Name="EvalAnswerCStrength" ColumnName="EvalAnswerCStrength" />
+                <ScalarProperty Name="EvalAnswerDStrength" ColumnName="EvalAnswerDStrength" />
+                <ScalarProperty Name="EvalQuestionID" ColumnName="EvalQuestionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EvaluationTests">
+            <EntityTypeMapping TypeName="AdaptiveLearningModel.EvaluationTest">
+              <MappingFragment StoreEntitySet="EvaluationTest">
+                <ScalarProperty Name="EvalQuestionID" ColumnName="EvalQuestionID" />
+                <ScalarProperty Name="EvalQuestion" ColumnName="EvalQuestion" />
+                <ScalarProperty Name="EvalAnswerA" ColumnName="EvalAnswerA" />
+                <ScalarProperty Name="EvalAnswerB" ColumnName="EvalAnswerB" />
+                <ScalarProperty Name="EvalAnswerC" ColumnName="EvalAnswerC" />
+                <ScalarProperty Name="EvalAnswerD" ColumnName="EvalAnswerD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LearningStyles">
+            <EntityTypeMapping TypeName="AdaptiveLearningModel.LearningStyle">
+              <MappingFragment StoreEntitySet="LearningStyle">
+                <ScalarProperty Name="LearningStyleID" ColumnName="LearningStyleID" />
+                <ScalarProperty Name="LearningType" ColumnName="LearningType" />
+                <ScalarProperty Name="LearningStyle1" ColumnName="LearningStyle" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Memberships">
+            <EntityTypeMapping TypeName="AdaptiveLearningModel.Membership">
+              <MappingFragment StoreEntitySet="Memberships">
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordFormat" ColumnName="PasswordFormat" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+                <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+                <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+                <ScalarProperty Name="FailedPasswordAttemptWindowStart" ColumnName="FailedPasswordAttemptWindowStart" />
+                <ScalarProperty Name="FailedPasswordAnswerAttemptCount" ColumnName="FailedPasswordAnswerAttemptCount" />
+                <ScalarProperty Name="FailedPasswordAnswerAttemptWindowsStart" ColumnName="FailedPasswordAnswerAttemptWindowsStart" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profiles">
+            <EntityTypeMapping TypeName="AdaptiveLearningModel.Profile">
+              <MappingFragment StoreEntitySet="Profiles">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PropertyNames" ColumnName="PropertyNames" />
+                <ScalarProperty Name="PropertyValueStrings" ColumnName="PropertyValueStrings" />
+                <ScalarProperty Name="PropertyValueBinary" ColumnName="PropertyValueBinary" />
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="AdaptiveLearningModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AdaptiveLearningModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersInRoles">
+            <EntityTypeMapping TypeName="AdaptiveLearningModel.UsersInRole">
+              <MappingFragment StoreEntitySet="UsersInRoles">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="SetDate" ColumnName="SetDate" />
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
