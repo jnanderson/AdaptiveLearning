@@ -35,6 +35,7 @@ namespace AdaptiveLearningFinal.Models
         public DbSet<Membership> Memberships { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Topic> Topics { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UsersInRole> UsersInRoles { get; set; }
     }

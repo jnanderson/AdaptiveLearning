@@ -1,0 +1,25 @@
+﻿@model AdaptiveLearningFinal.Models.Topic
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Topic</legend>
+
+    <div class="display-label">TopicName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TopicName)
+    </div>
+
+    <div class="display-label">TopicDescription</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TopicDescription)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.TopicId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

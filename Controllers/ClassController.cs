@@ -18,12 +18,13 @@ namespace AdaptiveLearningFinal.Controllers
         [Authorize(Roles = "Administrator")]
         public ViewResult Index()
         {
-            return View(db.Courses.ToList());
+            var courses = db.Courses.Include(c => c.Topic);
+            return View(courses.ToList());
         }
 
         //
         // GET: /Class/Details/5
-
+        [Authorize(Roles = "Administrator")]
         public ViewResult Details(int id)
         {
             Course course = db.Courses.Find(id);
@@ -35,6 +36,7 @@ namespace AdaptiveLearningFinal.Controllers
         [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
+            ViewBag.TopicId = new SelectList(db.Topics, "TopicId", "TopicName");
             return View();
         } 
 
@@ -51,6 +53,7 @@ namespace AdaptiveLearningFinal.Controllers
                 return RedirectToAction("Index");  
             }
 
+            ViewBag.TopicId = new SelectList(db.Topics, "TopicId", "TopicName", course.TopicId);
             return View(course);
         }
         
@@ -60,6 +63,7 @@ namespace AdaptiveLearningFinal.Controllers
         public ActionResult Edit(int id)
         {
             Course course = db.Courses.Find(id);
+            ViewBag.TopicId = new SelectList(db.Topics, "TopicId", "TopicName", course.TopicId);
             return View(course);
         }
 
@@ -75,6 +79,7 @@ namespace AdaptiveLearningFinal.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.TopicId = new SelectList(db.Topics, "TopicId", "TopicName", course.TopicId);
             return View(course);
         }
 
@@ -90,7 +95,7 @@ namespace AdaptiveLearningFinal.Controllers
         //
         // POST: /Class/Delete/5
 
-        [HttpPost, Authorize(Roles = "Administrator"), ActionName("Delete")]
+        [HttpPost, ActionName("Delete"), Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int id)
         {            
             Course course = db.Courses.Find(id);

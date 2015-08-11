@@ -38,7 +38,14 @@ namespace AdaptiveLearningFinal.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        if (User.IsInRole("Administrator"))
+                        {
+                            return RedirectToAction("Index", "Home");
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "ChooseCourse");
+                        }
                     }
                 }
                 else

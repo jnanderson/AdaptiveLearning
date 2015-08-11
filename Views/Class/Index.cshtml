@@ -18,6 +18,9 @@
             ClassName
         </th>
         <th>
+            Topic
+        </th>
+        <th>
             ClassLevel
         </th>
         <th></th>
@@ -32,12 +35,15 @@
             @Html.DisplayFor(modelItem => item.ClassName)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Topic.TopicName)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.ClassLevel)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ClassID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ClassID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ClassID })
         </td>
     </tr>
 }

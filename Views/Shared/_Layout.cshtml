@@ -18,17 +18,19 @@
             </div>
             <nav>
                 <ul id="menu">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>                      
                     @if (User.IsInRole("Administrator"))
                     {
-                    <li>@Html.ActionLink("Add Course", "Index", "Class")</li>
-                    <li>@Html.ActionLink("Add Question", "Index", "Questions")</li>
-                    <li>@Html.ActionLink("Add Roles", "Index", "UserRole")</li>
-                    <li>@Html.ActionLink("Assign Roles", "Index", "AssignRoles")</li>                        
+                                              
+                        <li>@Html.ActionLink("Add Course", "Index", "Class")</li>
+                        <li>@Html.ActionLink("Add Question", "Index", "Questions")</li>
+                        <li>@Html.ActionLink("Add Roles", "Index", "UserRole")</li>
+                        <li>@Html.ActionLink("Assign Roles", "Index", "AssignRoles")</li>
+                        <li>@Html.ActionLink("Add Topic", "Index", "Topic")</li>                        
                     }
                     @if (User.IsInRole("Student"))
-                    {
-
+                    {                        
+                        <li>@Html.ActionLink("PreTest", "Index", "ShowTest")</li> 
                     }
                 </ul>
             </nav>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b9ef21b10f3042a498a54efd860aacba" Name="Diagram1">
+        <EntityTypeShape EntityType="AdaptiveLearningModel.Application" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdaptiveLearningModel.Course" Width="1.5" PointX="3.75" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdaptiveLearningModel.CourseQuestion" Width="1.5" PointX="6" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdaptiveLearningModel.CourseResult" Width="1.5" PointX="8.25" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdaptiveLearningModel.EvaluationResult" Width="1.5" PointX="8.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdaptiveLearningModel.EvaluationTest" Width="1.5" PointX="6" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdaptiveLearningModel.LearningStyle" Width="1.5" PointX="5.25" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdaptiveLearningModel.Membership" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdaptiveLearningModel.Profile" Width="1.5" PointX="5.25" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdaptiveLearningModel.Role" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdaptiveLearningModel.Topic" Width="1.5" PointX="1.5" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdaptiveLearningModel.User" Width="1.5" PointX="3" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdaptiveLearningModel.UsersInRole" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />
+        <AssociationConnector Association="AdaptiveLearningModel.MembershipApplication" ManuallyRouted="false" />
+        <AssociationConnector Association="AdaptiveLearningModel.RoleApplication" ManuallyRouted="false" />
+        <AssociationConnector Association="AdaptiveLearningModel.UserApplication" ManuallyRouted="false" />
+        <AssociationConnector Association="AdaptiveLearningModel.FK_Course_Topic" ManuallyRouted="false" />
+        <AssociationConnector Association="AdaptiveLearningModel.FK_CourseQuestion_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="AdaptiveLearningModel.FK_CourseResult_CourseQuestion" ManuallyRouted="false" />
+        <AssociationConnector Association="AdaptiveLearningModel.FK_CourseResult_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="AdaptiveLearningModel.FK_EvaluationResults_EvaluationTest" ManuallyRouted="false" />
+        <AssociationConnector Association="AdaptiveLearningModel.FK_EvaluationResults_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="AdaptiveLearningModel.FK_LearningStyle_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="AdaptiveLearningModel.MembershipUser" ManuallyRouted="false" />
+        <AssociationConnector Association="AdaptiveLearningModel.UserProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="AdaptiveLearningModel.UsersInRoleRole" ManuallyRouted="false" />
+        <AssociationConnector Association="AdaptiveLearningModel.UsersInRoleUser" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

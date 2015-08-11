@@ -21,8 +21,10 @@ namespace AdaptiveLearningFinal.Models
     
         public int ClassID { get; set; }
         public string ClassName { get; set; }
+        public Nullable<int> TopicId { get; set; }
         public Nullable<int> ClassLevel { get; set; }
     
+        public virtual Topic Topic { get; set; }
         public virtual ICollection<CourseQuestion> CourseQuestions { get; set; }
     }
 }

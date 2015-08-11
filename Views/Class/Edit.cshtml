@@ -31,6 +31,14 @@
         </div>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.TopicId, "Topic")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("TopicId", String.Empty)
+            @Html.ValidationMessageFor(model => model.TopicId)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.ClassLevel)
         </div>
         <div class="editor-field">

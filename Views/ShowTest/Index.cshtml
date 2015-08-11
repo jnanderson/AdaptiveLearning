@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AdaptiveLearningFinal.Models.CourseQuestion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Pre-Test</h2>
+
+
+<table style="border: none">
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="border: none">
+            @Html.DisplayFor(modelItem => item.Question)
+        </td>
+    </tr>
+    <tr>
+        <td style="border: none">
+            @Html.RadioButtonFor(modelItem => item.QuestionID, false);
+            @Html.DisplayFor(modelItem => item.QuestionAnswer)
+        </td>
+
+
+    </tr>
+}
+    <tr>
+        <td style="border: none;">
+            @Html.ActionLink("Next Question", "NextQuestion")
+        </td>
+    </tr>
+
+</table>
