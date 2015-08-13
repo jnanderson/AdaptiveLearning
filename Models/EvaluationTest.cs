@@ -25,6 +25,7 @@ namespace AdaptiveLearningFinal.Models
         public string EvalAnswerB { get; set; }
         public string EvalAnswerC { get; set; }
         public string EvalAnswerD { get; set; }
+        public string EvalCorrectAnswer { get; set; }
     
         public virtual ICollection<EvaluationResult> EvaluationResults { get; set; }
     }

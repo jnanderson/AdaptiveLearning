@@ -11,6 +11,7 @@
     <EntitySet Name="Memberships" EntityType="AdaptiveLearningModel.Membership" />
     <EntitySet Name="Profiles" EntityType="AdaptiveLearningModel.Profile" />
     <EntitySet Name="Roles" EntityType="AdaptiveLearningModel.Role" />
+    <EntitySet Name="Topics" EntityType="AdaptiveLearningModel.Topic" />
     <EntitySet Name="Users" EntityType="AdaptiveLearningModel.User" />
     <EntitySet Name="UsersInRoles" EntityType="AdaptiveLearningModel.UsersInRole" />
     <AssociationSet Name="MembershipApplication" Association="AdaptiveLearningModel.MembershipApplication">
@@ -24,6 +25,10 @@
     <AssociationSet Name="UserApplication" Association="AdaptiveLearningModel.UserApplication">
       <End Role="Applications" EntitySet="Applications" />
       <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_Topic" Association="AdaptiveLearningModel.FK_Course_Topic">
+      <End Role="Topic" EntitySet="Topics" />
+      <End Role="Course" EntitySet="Courses" />
     </AssociationSet>
     <AssociationSet Name="FK_CourseQuestion_Class" Association="AdaptiveLearningModel.FK_CourseQuestion_Class">
       <End Role="Course" EntitySet="Courses" />
@@ -83,7 +88,9 @@
     </Key>
     <Property Name="ClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ClassName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="TopicId" Type="Int32" />
     <Property Name="ClassLevel" Type="Int32" />
+    <NavigationProperty Name="Topic" Relationship="AdaptiveLearningModel.FK_Course_Topic" FromRole="Course" ToRole="Topic" />
     <NavigationProperty Name="CourseQuestions" Relationship="AdaptiveLearningModel.FK_CourseQuestion_Class" FromRole="Course" ToRole="CourseQuestion" />
   </EntityType>
   <EntityType Name="CourseQuestion">
@@ -92,10 +99,14 @@
     </Key>
     <Property Name="QuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="QuestionLevel" Type="Int32" />
-    <Property Name="QuestionAnswer" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="QuestionAnswerA" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="QuestionAnswerB" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="QuestionAnswerC" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="QuestionAnswerD" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
     <Property Name="QuestionExplanation" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
     <Property Name="Question" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
     <Property Name="ClassID" Type="Int32" />
+    <Property Name="QuestionCorrectAnswer" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="Course" Relationship="AdaptiveLearningModel.FK_CourseQuestion_Class" FromRole="CourseQuestion" ToRole="Course" />
     <NavigationProperty Name="CourseResults" Relationship="AdaptiveLearningModel.FK_CourseResult_CourseQuestion" FromRole="CourseQuestion" ToRole="CourseResult" />
   </EntityType>
@@ -116,11 +127,8 @@
     </Key>
     <Property Name="ERID" Type="Int32" Nullable="false" />
     <Property Name="UserID" Type="Guid" />
-    <Property Name="EvalAnswerAStrength" Type="Int32" />
-    <Property Name="EvalAnswerBStrength" Type="Int32" />
-    <Property Name="EvalAnswerCStrength" Type="Int32" />
-    <Property Name="EvalAnswerDStrength" Type="Int32" />
-    <Property Name="EvalQuestionID" Type="Int32" Nullable="false" />
+    <Property Name="EvalQuestionID" Type="Int32" />
+    <Property Name="Correct" Type="Boolean" />
     <NavigationProperty Name="EvaluationTest" Relationship="AdaptiveLearningModel.FK_EvaluationResults_EvaluationTest" FromRole="EvaluationResults" ToRole="EvaluationTest" />
     <NavigationProperty Name="User" Relationship="AdaptiveLearningModel.FK_EvaluationResults_Users" FromRole="EvaluationResults" ToRole="Users" />
   </EntityType>
@@ -134,6 +142,7 @@
     <Property Name="EvalAnswerB" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
     <Property Name="EvalAnswerC" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
     <Property Name="EvalAnswerD" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="EvalCorrectAnswer" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="EvaluationResults" Relationship="AdaptiveLearningModel.FK_EvaluationResults_EvaluationTest" FromRole="EvaluationTest" ToRole="EvaluationResults" />
   </EntityType>
   <EntityType Name="LearningStyle">
@@ -193,6 +202,15 @@
     <Property Name="Description" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Application" Relationship="AdaptiveLearningModel.RoleApplication" FromRole="Roles" ToRole="Applications" />
     <NavigationProperty Name="UsersInRoles" Relationship="AdaptiveLearningModel.UsersInRoleRole" FromRole="Roles" ToRole="UsersInRoles" />
+  </EntityType>
+  <EntityType Name="Topic">
+    <Key>
+      <PropertyRef Name="TopicId" />
+    </Key>
+    <Property Name="TopicId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TopicName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="TopicDescription" Type="String" MaxLength="3000" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Courses" Relationship="AdaptiveLearningModel.FK_Course_Topic" FromRole="Topic" ToRole="Course" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -258,6 +276,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Course_Topic">
+    <End Role="Topic" Type="AdaptiveLearningModel.Topic" Multiplicity="0..1" />
+    <End Role="Course" Type="AdaptiveLearningModel.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Topic">
+        <PropertyRef Name="TopicId" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="TopicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_CourseQuestion_Class">
     <End Role="Course" Type="AdaptiveLearningModel.Course" Multiplicity="0..1" />
     <End Role="CourseQuestion" Type="AdaptiveLearningModel.CourseQuestion" Multiplicity="*" />
@@ -297,7 +327,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_EvaluationResults_EvaluationTest">
-    <End Role="EvaluationTest" Type="AdaptiveLearningModel.EvaluationTest" Multiplicity="1" />
+    <End Role="EvaluationTest" Type="AdaptiveLearningModel.EvaluationTest" Multiplicity="0..1" />
     <End Role="EvaluationResults" Type="AdaptiveLearningModel.EvaluationResult" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="EvaluationTest">

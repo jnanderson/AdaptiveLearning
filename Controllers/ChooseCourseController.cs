@@ -15,8 +15,19 @@ namespace AdaptiveLearningFinal.Controllers
 
         public ActionResult Index()
         {
+           
             ViewBag.TopicId = new SelectList(db.Topics, "TopicId", "TopicName");
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(ChooseCourse viewModel)
+        {
+
+
+            int selectedItem = viewModel.TopicId;
+            
+            return RedirectToAction("Index", "ShowTest", new { selectedItem = selectedItem });
         }
 
     }

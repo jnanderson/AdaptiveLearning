@@ -16,11 +16,8 @@ namespace AdaptiveLearningFinal.Models
     {
         public int ERID { get; set; }
         public Nullable<System.Guid> UserID { get; set; }
-        public Nullable<int> EvalAnswerAStrength { get; set; }
-        public Nullable<int> EvalAnswerBStrength { get; set; }
-        public Nullable<int> EvalAnswerCStrength { get; set; }
-        public Nullable<int> EvalAnswerDStrength { get; set; }
-        public int EvalQuestionID { get; set; }
+        public Nullable<int> EvalQuestionID { get; set; }
+        public Nullable<bool> Correct { get; set; }
     
         public virtual EvaluationTest EvaluationTest { get; set; }
         public virtual User User { get; set; }

@@ -111,10 +111,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\AdaptiveLearningModels.Designer.cs">
+    <Compile Include="Models\AdaptiveLearningModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AdaptiveLearningModels.edmx</DependentUpon>
+      <DependentUpon>AdaptiveLearningModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Application.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -224,22 +224,22 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
-    <EntityDeploy Include="Models\AdaptiveLearningModels.edmx">
+    <EntityDeploy Include="Models\AdaptiveLearningModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AdaptiveLearningModels.Designer.cs</LastGenOutput>
+      <LastGenOutput>AdaptiveLearningModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\AdaptiveLearningModels.edmx.diagram">
-      <DependentUpon>AdaptiveLearningModels.edmx</DependentUpon>
+    <Content Include="Models\AdaptiveLearningModel.edmx.diagram">
+      <DependentUpon>AdaptiveLearningModel.edmx</DependentUpon>
     </Content>
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>AdaptiveLearningModels.edmx</DependentUpon>
+      <DependentUpon>AdaptiveLearningModel.edmx</DependentUpon>
     </Content>
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.cs</LastGenOutput>
-      <DependentUpon>AdaptiveLearningModels.edmx</DependentUpon>
+      <DependentUpon>AdaptiveLearningModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -279,11 +279,6 @@
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Questions\Index.cshtml" />
-    <Content Include="Views\Questions\Details.cshtml" />
-    <Content Include="Views\Questions\Create.cshtml" />
-    <Content Include="Views\Questions\Edit.cshtml" />
-    <Content Include="Views\Questions\Delete.cshtml" />
     <Content Include="Views\Results\Index.cshtml" />
     <Content Include="Views\Results\Details.cshtml" />
     <Content Include="Views\Results\Create.cshtml" />
@@ -299,7 +294,6 @@
     <Content Include="Views\AssignRoles\Create.cshtml" />
     <Content Include="Views\AssignRoles\Edit.cshtml" />
     <Content Include="Views\AssignRoles\Delete.cshtml" />
-    <Content Include="Views\ShowTest\Index.cshtml" />
     <Content Include="Views\Topic\Index.cshtml" />
     <Content Include="Views\Topic\Details.cshtml" />
     <Content Include="Views\Topic\Create.cshtml" />
@@ -311,6 +305,12 @@
     <Content Include="Views\Class\Edit.cshtml" />
     <Content Include="Views\Class\Delete.cshtml" />
     <Content Include="Views\ChooseCourse\Index.cshtml" />
+    <Content Include="Views\Questions\Index.cshtml" />
+    <Content Include="Views\Questions\Details.cshtml" />
+    <Content Include="Views\Questions\Create.cshtml" />
+    <Content Include="Views\Questions\Edit.cshtml" />
+    <Content Include="Views\Questions\Delete.cshtml" />
+    <Content Include="Views\ShowTest\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

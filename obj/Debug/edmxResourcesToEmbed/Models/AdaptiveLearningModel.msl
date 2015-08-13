@@ -15,6 +15,7 @@
         <MappingFragment StoreEntitySet="Course">
           <ScalarProperty Name="ClassID" ColumnName="ClassID" />
           <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="TopicId" ColumnName="TopicId" />
           <ScalarProperty Name="ClassLevel" ColumnName="ClassLevel" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -24,10 +25,14 @@
         <MappingFragment StoreEntitySet="CourseQuestion">
           <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
           <ScalarProperty Name="QuestionLevel" ColumnName="QuestionLevel" />
-          <ScalarProperty Name="QuestionAnswer" ColumnName="QuestionAnswer" />
+          <ScalarProperty Name="QuestionAnswerA" ColumnName="QuestionAnswerA" />
+          <ScalarProperty Name="QuestionAnswerB" ColumnName="QuestionAnswerB" />
+          <ScalarProperty Name="QuestionAnswerC" ColumnName="QuestionAnswerC" />
+          <ScalarProperty Name="QuestionAnswerD" ColumnName="QuestionAnswerD" />
           <ScalarProperty Name="QuestionExplanation" ColumnName="QuestionExplanation" />
           <ScalarProperty Name="Question" ColumnName="Question" />
           <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="QuestionCorrectAnswer" ColumnName="QuestionCorrectAnswer" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -46,11 +51,8 @@
         <MappingFragment StoreEntitySet="EvaluationResults">
           <ScalarProperty Name="ERID" ColumnName="ERID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="EvalAnswerAStrength" ColumnName="EvalAnswerAStrength" />
-          <ScalarProperty Name="EvalAnswerBStrength" ColumnName="EvalAnswerBStrength" />
-          <ScalarProperty Name="EvalAnswerCStrength" ColumnName="EvalAnswerCStrength" />
-          <ScalarProperty Name="EvalAnswerDStrength" ColumnName="EvalAnswerDStrength" />
           <ScalarProperty Name="EvalQuestionID" ColumnName="EvalQuestionID" />
+          <ScalarProperty Name="Correct" ColumnName="Correct" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -63,6 +65,7 @@
           <ScalarProperty Name="EvalAnswerB" ColumnName="EvalAnswerB" />
           <ScalarProperty Name="EvalAnswerC" ColumnName="EvalAnswerC" />
           <ScalarProperty Name="EvalAnswerD" ColumnName="EvalAnswerD" />
+          <ScalarProperty Name="EvalCorrectAnswer" ColumnName="EvalCorrectAnswer" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -119,6 +122,15 @@
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
           <ScalarProperty Name="RoleName" ColumnName="RoleName" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Topics">
+      <EntityTypeMapping TypeName="AdaptiveLearningModel.Topic">
+        <MappingFragment StoreEntitySet="Topic">
+          <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+          <ScalarProperty Name="TopicName" ColumnName="TopicName" />
+          <ScalarProperty Name="TopicDescription" ColumnName="TopicDescription" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

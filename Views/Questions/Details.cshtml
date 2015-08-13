@@ -19,9 +19,24 @@
         @Html.DisplayFor(model => model.QuestionLevel)
     </div>
 
-    <div class="display-label">QuestionAnswer</div>
+    <div class="display-label">QuestionAnswerA</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.QuestionAnswer)
+        @Html.DisplayFor(model => model.QuestionAnswerA)
+    </div>
+
+    <div class="display-label">QuestionAnswerB</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuestionAnswerB)
+    </div>
+
+    <div class="display-label">QuestionAnswerC</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuestionAnswerC)
+    </div>
+
+    <div class="display-label">QuestionAnswerD</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuestionAnswerD)
     </div>
 
     <div class="display-label">QuestionExplanation</div>
@@ -38,8 +53,13 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Course.ClassName)
     </div>
+
+    <div class="display-label">QuestionCorrectAnswer</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuestionCorrectAnswer)
+    </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=item.QuestionID }) |
+    @Html.ActionLink("Edit", "Edit", new { id=Model.QuestionID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

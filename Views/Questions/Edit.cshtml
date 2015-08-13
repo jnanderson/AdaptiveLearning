@@ -31,11 +31,35 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.QuestionAnswer)
+            @Html.LabelFor(model => model.QuestionAnswerA)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.QuestionAnswer)
-            @Html.ValidationMessageFor(model => model.QuestionAnswer)
+            @Html.EditorFor(model => model.QuestionAnswerA)
+            @Html.ValidationMessageFor(model => model.QuestionAnswerA)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.QuestionAnswerB)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.QuestionAnswerB)
+            @Html.ValidationMessageFor(model => model.QuestionAnswerB)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.QuestionAnswerC)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.QuestionAnswerC)
+            @Html.ValidationMessageFor(model => model.QuestionAnswerC)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.QuestionAnswerD)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.QuestionAnswerD)
+            @Html.ValidationMessageFor(model => model.QuestionAnswerD)
         </div>
 
         <div class="editor-label">
@@ -60,6 +84,14 @@
         <div class="editor-field">
             @Html.DropDownList("ClassID", String.Empty)
             @Html.ValidationMessageFor(model => model.ClassID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.QuestionCorrectAnswer)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.QuestionCorrectAnswer)
+            @Html.ValidationMessageFor(model => model.QuestionCorrectAnswer)
         </div>
 
         <p>

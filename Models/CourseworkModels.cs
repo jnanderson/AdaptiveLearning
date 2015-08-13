@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace AdaptiveLearningFinal.Models
 {
-    public class Questions
+    public partial class Questions
     {
 
             public Questions()
@@ -15,17 +16,23 @@ namespace AdaptiveLearningFinal.Models
 
             public int QuestionID { get; set; }
             public Nullable<int> QuestionLevel { get; set; }
-            public string QuestionAnswer { get; set; }
+            public string QuestionAnswerA { get; set; }
+            public string QuestionAnswerB { get; set; }
+            public string QuestionAnswerC { get; set; }
+            public string QuestionAnswerD { get; set; }
             public string QuestionExplanation { get; set; }
             public string Question { get; set; }
             public Nullable<int> ClassID { get; set; }
+            public string QuestionCorrectAnswer { get; set; }
 
             public virtual Course Course { get; set; }
             public virtual ICollection<CourseResult> CourseResults { get; set; }
+
+        
         
     }
 
-    public class ChooseCourse
+    public partial class ChooseCourse
     {
         public ChooseCourse()
         {
@@ -37,5 +44,23 @@ namespace AdaptiveLearningFinal.Models
         public string TopicDescription { get; set; }
     
         public virtual ICollection<Course> Courses { get; set; }
+
+
+        public string SelectedItemValue { get; set; }
+
+        
     }
+
+    public partial class TestResults
+    {
+        public int CourseResultID { get; set; }
+        public Nullable<int> QuestionID { get; set; }
+        public Nullable<System.Guid> UserId { get; set; }
+        public Nullable<bool> Correct { get; set; }
+
+        public virtual CourseQuestion CourseQuestion { get; set; }
+        public virtual User User { get; set; }
+    }
+
+   
 }
