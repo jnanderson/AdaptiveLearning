@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AdaptiveLearningFinal.Models.CourseMaterial>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            MaterialID
+        </th>
+        <th>
+            Course
+        </th>
+        <th>
+            VideoUrl
+        </th>
+        <th>
+            ReadingUrl
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaterialID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.ClassName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VideoUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReadingUrl)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaterialID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaterialID  }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaterialID  })
+        </td>
+    </tr>
+}
+
+</table>

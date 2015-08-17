@@ -27,10 +27,10 @@ namespace AdaptiveLearningFinal.Models
     
         public DbSet<Application> Applications { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<CourseMaterial> CourseMaterials { get; set; }
         public DbSet<CourseQuestion> CourseQuestions { get; set; }
         public DbSet<CourseResult> CourseResults { get; set; }
         public DbSet<EvaluationResult> EvaluationResults { get; set; }
-        public DbSet<EvaluationTest> EvaluationTests { get; set; }
         public DbSet<LearningStyle> LearningStyles { get; set; }
         public DbSet<Membership> Memberships { get; set; }
         public DbSet<Profile> Profiles { get; set; }
@@ -38,5 +38,6 @@ namespace AdaptiveLearningFinal.Models
         public DbSet<Topic> Topics { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UsersInRole> UsersInRoles { get; set; }
+        public DbSet<UserTopic> UserTopics { get; set; }
     }
 }

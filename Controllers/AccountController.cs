@@ -11,6 +11,7 @@ namespace AdaptiveLearningFinal.Controllers
 {
     public class AccountController : Controller
     {
+        private AdaptiveLearningEntities db = new AdaptiveLearningEntities();
 
         //
         // GET: /Account/LogOn
@@ -68,11 +69,13 @@ namespace AdaptiveLearningFinal.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+       
         //
         // GET: /Account/Register
 
         public ActionResult Register()
         {
+            ViewBag.LearningStyleId = new SelectList(db.LearningStyles, "LearningStyleID", "LearningStyleName");
             return View();
         }
 
@@ -84,12 +87,16 @@ namespace AdaptiveLearningFinal.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
                 System.Web.Security.Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
-
+                
                 if (createStatus == MembershipCreateStatus.Success)
                 {
+                    int SelectedLearningID = model.LearningStyleID;
+                    string UserName = model.UserName;
+                    UpdateLearningMethod(SelectedLearningID, UserName);
                     FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
                     return RedirectToAction("Index", "Home");
                 }
@@ -155,6 +162,19 @@ namespace AdaptiveLearningFinal.Controllers
         public ActionResult ChangePasswordSuccess()
         {
             return View();
+        }
+
+        //Method to update the Learning Method Id in the database based on the User specified criteria
+        private void UpdateLearningMethod(int SelectedLearningID, string UserName)
+        { 
+            var query = from u in db.Users where (u.UserName == UserName) select u;
+            if (query.Count() != 0)
+            {
+                var LearningMethod = query.First();
+                LearningMethod.LearningStyleID = SelectedLearningID;
+                db.SaveChanges();
+            }
+
         }
 
         #region Status Codes

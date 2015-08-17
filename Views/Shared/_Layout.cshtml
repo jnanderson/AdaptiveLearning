@@ -26,11 +26,14 @@
                         <li>@Html.ActionLink("Add Question", "Index", "Questions")</li>
                         <li>@Html.ActionLink("Add Roles", "Index", "UserRole")</li>
                         <li>@Html.ActionLink("Assign Roles", "Index", "AssignRoles")</li>
-                        <li>@Html.ActionLink("Add Topic", "Index", "Topic")</li>                        
+                        <li>@Html.ActionLink("Add Topic", "Index", "Topic")</li>
+                        <li>@Html.ActionLink("Add Course Material", "Index", "CourseMaterial")</li>
+                                               
                     }
                     @if (User.IsInRole("Student"))
                     {                        
-                        <li>@Html.ActionLink("Choose Course", "Index", "ChooseCourse")</li>
+                        <li>@Html.ActionLink("Choose Topic", "Index", "ChooseCourse")</li>
+                        <li>@Html.ActionLink("Course Results", "Index", "EvaluationResults")</li>
                         
                     }
                 </ul>

@@ -17,6 +17,7 @@ namespace AdaptiveLearningFinal.Models
         public Topic()
         {
             this.Courses = new HashSet<Course>();
+            this.UserTopics = new HashSet<UserTopic>();
         }
     
         public int TopicId { get; set; }
@@ -24,5 +25,6 @@ namespace AdaptiveLearningFinal.Models
         public string TopicDescription { get; set; }
     
         public virtual ICollection<Course> Courses { get; set; }
+        public virtual ICollection<UserTopic> UserTopics { get; set; }
     }
 }

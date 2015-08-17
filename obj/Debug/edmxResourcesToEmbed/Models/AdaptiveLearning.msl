@@ -58,7 +58,7 @@
     </EntitySetMapping>
     <EntitySetMapping Name="EvaluationResults">
       <EntityTypeMapping TypeName="AdaptiveLearningModel.EvaluationResult">
-        <MappingFragment StoreEntitySet="EvaluationResult">
+        <MappingFragment StoreEntitySet="EvaluationResults">
           <ScalarProperty Name="ERID" ColumnName="ERID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="EvalQuestionID" ColumnName="EvalQuestionID" />
@@ -66,11 +66,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="EvaluationTests">
+      <EntityTypeMapping TypeName="AdaptiveLearningModel.EvaluationTest">
+        <MappingFragment StoreEntitySet="EvaluationTest">
+          <ScalarProperty Name="EvalQuestionID" ColumnName="EvalQuestionID" />
+          <ScalarProperty Name="EvalQuestion" ColumnName="EvalQuestion" />
+          <ScalarProperty Name="EvalAnswerA" ColumnName="EvalAnswerA" />
+          <ScalarProperty Name="EvalAnswerB" ColumnName="EvalAnswerB" />
+          <ScalarProperty Name="EvalAnswerC" ColumnName="EvalAnswerC" />
+          <ScalarProperty Name="EvalAnswerD" ColumnName="EvalAnswerD" />
+          <ScalarProperty Name="EvalCorrectAnswer" ColumnName="EvalCorrectAnswer" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="EvalQuestionLevel" ColumnName="EvalQuestionLevel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="LearningStyles">
       <EntityTypeMapping TypeName="AdaptiveLearningModel.LearningStyle">
         <MappingFragment StoreEntitySet="LearningStyle">
-          <ScalarProperty Name="LearningStyleName" ColumnName="LearningStyleName" />
           <ScalarProperty Name="LearningStyleID" ColumnName="LearningStyleID" />
+          <ScalarProperty Name="LearningStyle1" ColumnName="LearningStyle" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -132,7 +148,6 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="AdaptiveLearningModel.User">
         <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="LearningStyleID" ColumnName="LearningStyleID" />
           <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />

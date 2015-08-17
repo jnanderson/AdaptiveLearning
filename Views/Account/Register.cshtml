@@ -17,6 +17,7 @@
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.")
+    
     <div>
         <fieldset>
             <legend>Account Information</legend>
@@ -35,6 +36,13 @@
             <div class="editor-field">
                 @Html.TextBoxFor(m => m.Email)
                 @Html.ValidationMessageFor(m => m.Email)
+            </div>
+            <div class="editor-label">
+                <br />
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(m => m.LearningStyleID, ViewBag.DropDownCollection as SelectList, "--Choose a Learning Method--")
+                @Html.ValidationMessageFor(m => m.LearningStyleID)
             </div>
 
             <div class="editor-label">

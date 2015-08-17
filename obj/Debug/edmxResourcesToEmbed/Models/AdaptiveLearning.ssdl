@@ -6,7 +6,8 @@
     <EntitySet Name="CourseMaterial" EntityType="AdaptiveLearningModel.Store.CourseMaterial" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CourseQuestion" EntityType="AdaptiveLearningModel.Store.CourseQuestion" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CourseResult" EntityType="AdaptiveLearningModel.Store.CourseResult" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="EvaluationResult" EntityType="AdaptiveLearningModel.Store.EvaluationResult" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EvaluationResults" EntityType="AdaptiveLearningModel.Store.EvaluationResults" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EvaluationTest" EntityType="AdaptiveLearningModel.Store.EvaluationTest" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="LearningStyle" EntityType="AdaptiveLearningModel.Store.LearningStyle" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Memberships" EntityType="AdaptiveLearningModel.Store.Memberships" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Profiles" EntityType="AdaptiveLearningModel.Store.Profiles" store:Type="Tables" Schema="dbo" />
@@ -35,17 +36,21 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="CourseResult" EntitySet="CourseResult" />
     </AssociationSet>
-    <AssociationSet Name="FK_EvaluationResults_CourseQuestion" Association="AdaptiveLearningModel.Store.FK_EvaluationResults_CourseQuestion">
-      <End Role="CourseQuestion" EntitySet="CourseQuestion" />
-      <End Role="EvaluationResult" EntitySet="EvaluationResult" />
+    <AssociationSet Name="FK_EvaluationResults_EvaluationTest" Association="AdaptiveLearningModel.Store.FK_EvaluationResults_EvaluationTest">
+      <End Role="EvaluationTest" EntitySet="EvaluationTest" />
+      <End Role="EvaluationResults" EntitySet="EvaluationResults" />
     </AssociationSet>
-    <AssociationSet Name="FK_EvaluationResults_Users1" Association="AdaptiveLearningModel.Store.FK_EvaluationResults_Users1">
+    <AssociationSet Name="FK_EvaluationResults_Users" Association="AdaptiveLearningModel.Store.FK_EvaluationResults_Users">
       <End Role="Users" EntitySet="Users" />
-      <End Role="EvaluationResult" EntitySet="EvaluationResult" />
+      <End Role="EvaluationResults" EntitySet="EvaluationResults" />
     </AssociationSet>
-    <AssociationSet Name="FK_Users_LearningStyle" Association="AdaptiveLearningModel.Store.FK_Users_LearningStyle">
+    <AssociationSet Name="FK_EvaluationTest_Course" Association="AdaptiveLearningModel.Store.FK_EvaluationTest_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="EvaluationTest" EntitySet="EvaluationTest" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LearningStyle_Users" Association="AdaptiveLearningModel.Store.FK_LearningStyle_Users">
+      <End Role="Users" EntitySet="Users" />
       <End Role="LearningStyle" EntitySet="LearningStyle" />
-      <End Role="Users" EntitySet="Users" />
     </AssociationSet>
     <AssociationSet Name="FK_UserTopic_Topic" Association="AdaptiveLearningModel.Store.FK_UserTopic_Topic">
       <End Role="Topic" EntitySet="Topic" />
@@ -134,21 +139,36 @@
     <Property Name="UserId" Type="uniqueidentifier" />
     <Property Name="Correct" Type="bit" />
   </EntityType>
-  <EntityType Name="EvaluationResult">
+  <EntityType Name="EvaluationResults">
     <Key>
       <PropertyRef Name="ERID" />
     </Key>
-    <Property Name="ERID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ERID" Type="int" Nullable="false" />
     <Property Name="UserID" Type="uniqueidentifier" />
     <Property Name="EvalQuestionID" Type="int" />
     <Property Name="Correct" Type="bit" />
+  </EntityType>
+  <EntityType Name="EvaluationTest">
+    <Key>
+      <PropertyRef Name="EvalQuestionID" />
+    </Key>
+    <Property Name="EvalQuestionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EvalQuestion" Type="varchar(max)" />
+    <Property Name="EvalAnswerA" Type="varchar(max)" />
+    <Property Name="EvalAnswerB" Type="varchar(max)" />
+    <Property Name="EvalAnswerC" Type="varchar(max)" />
+    <Property Name="EvalAnswerD" Type="varchar(max)" />
+    <Property Name="EvalCorrectAnswer" Type="varchar(max)" />
+    <Property Name="ClassID" Type="int" />
+    <Property Name="EvalQuestionLevel" Type="int" />
   </EntityType>
   <EntityType Name="LearningStyle">
     <Key>
       <PropertyRef Name="LearningStyleID" />
     </Key>
     <Property Name="LearningStyleID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="LearningStyleName" Type="varchar" MaxLength="50" />
+    <Property Name="LearningStyle" Type="varchar" MaxLength="50" />
+    <Property Name="UserId" Type="uniqueidentifier" />
   </EntityType>
   <EntityType Name="Memberships">
     <Key>
@@ -210,7 +230,6 @@
     <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="IsAnonymous" Type="bit" Nullable="false" />
     <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
-    <Property Name="LearningStyleID" Type="int" />
   </EntityType>
   <EntityType Name="UsersInRoles">
     <Key>
@@ -292,39 +311,51 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_EvaluationResults_CourseQuestion">
-    <End Role="CourseQuestion" Type="AdaptiveLearningModel.Store.CourseQuestion" Multiplicity="0..1" />
-    <End Role="EvaluationResult" Type="AdaptiveLearningModel.Store.EvaluationResult" Multiplicity="*" />
+  <Association Name="FK_EvaluationResults_EvaluationTest">
+    <End Role="EvaluationTest" Type="AdaptiveLearningModel.Store.EvaluationTest" Multiplicity="0..1" />
+    <End Role="EvaluationResults" Type="AdaptiveLearningModel.Store.EvaluationResults" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="CourseQuestion">
-        <PropertyRef Name="QuestionID" />
+      <Principal Role="EvaluationTest">
+        <PropertyRef Name="EvalQuestionID" />
       </Principal>
-      <Dependent Role="EvaluationResult">
+      <Dependent Role="EvaluationResults">
         <PropertyRef Name="EvalQuestionID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_EvaluationResults_Users1">
+  <Association Name="FK_EvaluationResults_Users">
     <End Role="Users" Type="AdaptiveLearningModel.Store.Users" Multiplicity="0..1" />
-    <End Role="EvaluationResult" Type="AdaptiveLearningModel.Store.EvaluationResult" Multiplicity="*" />
+    <End Role="EvaluationResults" Type="AdaptiveLearningModel.Store.EvaluationResults" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Users">
         <PropertyRef Name="UserId" />
       </Principal>
-      <Dependent Role="EvaluationResult">
+      <Dependent Role="EvaluationResults">
         <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Users_LearningStyle">
-    <End Role="LearningStyle" Type="AdaptiveLearningModel.Store.LearningStyle" Multiplicity="0..1" />
-    <End Role="Users" Type="AdaptiveLearningModel.Store.Users" Multiplicity="*" />
+  <Association Name="FK_EvaluationTest_Course">
+    <End Role="Course" Type="AdaptiveLearningModel.Store.Course" Multiplicity="0..1" />
+    <End Role="EvaluationTest" Type="AdaptiveLearningModel.Store.EvaluationTest" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="LearningStyle">
-        <PropertyRef Name="LearningStyleID" />
+      <Principal Role="Course">
+        <PropertyRef Name="ClassID" />
       </Principal>
-      <Dependent Role="Users">
-        <PropertyRef Name="LearningStyleID" />
+      <Dependent Role="EvaluationTest">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LearningStyle_Users">
+    <End Role="Users" Type="AdaptiveLearningModel.Store.Users" Multiplicity="0..1" />
+    <End Role="LearningStyle" Type="AdaptiveLearningModel.Store.LearningStyle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="LearningStyle">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

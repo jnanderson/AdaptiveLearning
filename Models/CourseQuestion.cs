@@ -17,6 +17,7 @@ namespace AdaptiveLearningFinal.Models
         public CourseQuestion()
         {
             this.CourseResults = new HashSet<CourseResult>();
+            this.EvaluationResults = new HashSet<EvaluationResult>();
         }
     
         public int QuestionID { get; set; }
@@ -32,5 +33,6 @@ namespace AdaptiveLearningFinal.Models
     
         public virtual Course Course { get; set; }
         public virtual ICollection<CourseResult> CourseResults { get; set; }
+        public virtual ICollection<EvaluationResult> EvaluationResults { get; set; }
     }
 }

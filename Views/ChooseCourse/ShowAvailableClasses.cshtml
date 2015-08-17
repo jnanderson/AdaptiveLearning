@@ -1,0 +1,38 @@
+﻿@model AdaptiveLearningFinal.Models.ClassModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Please select a class</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+
+@using (Html.BeginForm("ShowAvailableClasses","ChooseCourse")) {
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(x => x.SelectedItemValue)
+   
+    
+    <fieldset>
+        <legend>Class</legend>
+        <div>
+            <p>
+                Based on your Pre Test results the following classes are available.  If the class is successfully completed it will be removed from the list.
+            </p>
+
+        </div>
+
+        <div class="editor-field">
+            @Html.DropDownListFor(c => c.ClassID, ViewBag.DropDownCollection as SelectList, "--Choose a Class--")
+            @Html.ValidationMessageFor(model => model.ClassID)
+        </div>
+        <div>
+            
+        </div>
+        <p>
+            <input type="submit" value="Select" />
+        </p>
+    </fieldset>
+}

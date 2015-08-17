@@ -18,7 +18,7 @@ namespace AdaptiveLearningFinal.Models
         {
             this.CourseResults = new HashSet<CourseResult>();
             this.EvaluationResults = new HashSet<EvaluationResult>();
-            this.LearningStyles = new HashSet<LearningStyle>();
+            this.UserTopics = new HashSet<UserTopic>();
             this.UsersInRoles = new HashSet<UsersInRole>();
         }
     
@@ -27,13 +27,15 @@ namespace AdaptiveLearningFinal.Models
         public string UserName { get; set; }
         public bool IsAnonymous { get; set; }
         public System.DateTime LastActivityDate { get; set; }
+        public Nullable<int> LearningStyleID { get; set; }
     
         public virtual Application Application { get; set; }
         public virtual ICollection<CourseResult> CourseResults { get; set; }
         public virtual ICollection<EvaluationResult> EvaluationResults { get; set; }
-        public virtual ICollection<LearningStyle> LearningStyles { get; set; }
         public virtual Membership Membership { get; set; }
         public virtual Profile Profile { get; set; }
+        public virtual ICollection<UserTopic> UserTopics { get; set; }
         public virtual ICollection<UsersInRole> UsersInRoles { get; set; }
+        public virtual LearningStyle LearningStyle { get; set; }
     }
 }

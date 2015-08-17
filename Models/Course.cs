@@ -16,6 +16,7 @@ namespace AdaptiveLearningFinal.Models
     {
         public Course()
         {
+            this.CourseMaterials = new HashSet<CourseMaterial>();
             this.CourseQuestions = new HashSet<CourseQuestion>();
         }
     
@@ -25,6 +26,7 @@ namespace AdaptiveLearningFinal.Models
         public Nullable<int> ClassLevel { get; set; }
     
         public virtual Topic Topic { get; set; }
+        public virtual ICollection<CourseMaterial> CourseMaterials { get; set; }
         public virtual ICollection<CourseQuestion> CourseQuestions { get; set; }
     }
 }

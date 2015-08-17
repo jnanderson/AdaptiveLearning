@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdaptiveLearningFinal.Models
 {
@@ -28,7 +29,10 @@ namespace AdaptiveLearningFinal.Models
             public virtual Course Course { get; set; }
             public virtual ICollection<CourseResult> CourseResults { get; set; }
 
-        
+            public int counter { get; set; }
+            public int SelectedItem { get; set; }
+            public int id { get; set; }
+
         
     }
 
@@ -62,5 +66,38 @@ namespace AdaptiveLearningFinal.Models
         public virtual User User { get; set; }
     }
 
+    public partial class ClassModel
+    {
+        public ClassModel()
+        {
+            this.CourseMaterials = new HashSet<CourseMaterial>();
+            this.CourseQuestions = new HashSet<CourseQuestion>();
+        }
+
+        public int ClassID { get; set; }
+        [Display(Name="ClassName")]
+        public string ClassName { get; set; }
+        public Nullable<int> TopicId { get; set; }
+        public Nullable<int> ClassLevel { get; set; }
+
+        public virtual Topic Topic { get; set; }
+        public virtual ICollection<CourseMaterial> CourseMaterials { get; set; }
+        public virtual ICollection<CourseQuestion> CourseQuestions { get; set; }
+
+        public string SelectedItemValue { get; set; }
+        public string SelectedItem { get; set; }
+    }
+
+    public partial class LearningModel
+    {
+        public int MaterialID { get; set; }
+        public Nullable<int> ClassID { get; set; }
+        public string VideoUrl { get; set; }
+        public string ReadingUrl { get; set; }
+
+        public virtual Course Course { get; set; }
+
+        public string SelectedItem { get; set; }
+    }
    
 }

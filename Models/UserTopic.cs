@@ -12,16 +12,14 @@ namespace AdaptiveLearningFinal.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class LearningStyle
+    public partial class UserTopic
     {
-        public LearningStyle()
-        {
-            this.Users = new HashSet<User>();
-        }
+        public int ITID { get; set; }
+        public Nullable<System.Guid> UserId { get; set; }
+        public Nullable<int> TopicId { get; set; }
+        public Nullable<bool> PretestComplete { get; set; }
     
-        public int LearningStyleID { get; set; }
-        public string LearningStyleName { get; set; }
-    
-        public virtual ICollection<User> Users { get; set; }
+        public virtual Topic Topic { get; set; }
+        public virtual User User { get; set; }
     }
 }

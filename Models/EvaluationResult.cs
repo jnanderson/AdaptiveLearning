@@ -19,7 +19,7 @@ namespace AdaptiveLearningFinal.Models
         public Nullable<int> EvalQuestionID { get; set; }
         public Nullable<bool> Correct { get; set; }
     
-        public virtual EvaluationTest EvaluationTest { get; set; }
+        public virtual CourseQuestion CourseQuestion { get; set; }
         public virtual User User { get; set; }
     }
 }

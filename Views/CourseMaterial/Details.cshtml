@@ -1,0 +1,35 @@
+﻿@model AdaptiveLearningFinal.Models.CourseMaterial
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>CourseMaterial</legend>
+
+    <div class="display-label">MaterialID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MaterialID)
+    </div>
+
+    <div class="display-label">Course</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Course.ClassName)
+    </div>
+
+    <div class="display-label">VideoUrl</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VideoUrl)
+    </div>
+
+    <div class="display-label">ReadingUrl</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ReadingUrl)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.MaterialID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

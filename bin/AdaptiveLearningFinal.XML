@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AdaptiveLearningFinal</name>
+    </assembly>
+    <members>
+        <member name="T:AdaptiveLearningFinal.Controllers.EvaluationResultsController">
+            <summary>
+             This class performs pulls and processes the results from the Course Test, and calculates the percentage correct for the user
+            </summary>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.EvaluationResultsController.AfterTest(System.Int32)">
+            <summary>
+            This retrieves the Users test from the DB and returns a list view for the index page
+            </summary>
+            <param name="SelectedItem"></param>
+            <returns>AfterTest View containing the query List</returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.EvaluationResultsController.CalculateStatistics(System.Int32)">
+            <summary>
+            Method Calculates the number of correct answers divided by the total number of answers.  This is a cumulative affect
+            </summary>
+            <param name="SelectedItem"></param>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Models.ChangePasswordModel">
+            <summary>
+            Model to store Change password attributes
+            </summary>
+        </member>
+        <member name="P:AdaptiveLearningFinal.Models.ChangePasswordModel.OldPassword">
+            <summary>
+            Attribute for current password
+            </summary>
+        </member>
+        <member name="P:AdaptiveLearningFinal.Models.ChangePasswordModel.NewPassword">
+            <summary>
+            Attribute for new password
+            </summary>
+        </member>
+        <member name="P:AdaptiveLearningFinal.Models.ChangePasswordModel.ConfirmPassword">
+            <summary>
+            Attribute to confirm password
+            </summary>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Models.LogOnModel">
+            <summary>
+            Model used to take user-defined user name and password information to log in to the system
+            </summary>
+        </member>
+        <member name="P:AdaptiveLearningFinal.Models.LogOnModel.UserName">
+            <summary>
+            Attribute: UserName
+            </summary>
+        </member>
+        <member name="P:AdaptiveLearningFinal.Models.LogOnModel.Password">
+            <summary>
+            Attribute: Password
+            </summary>
+        </member>
+        <member name="P:AdaptiveLearningFinal.Models.LogOnModel.RememberMe">
+            <summary>
+            Attribute: Checkbox to remember users information for the next time they sign in
+            </summary>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Models.RegisterModel">
+            <summary>
+            This is the model that stores the attributes necessary to register for the system
+            </summary>
+        </member>
+        <member name="P:AdaptiveLearningFinal.Models.RegisterModel.UserName">
+            <summary>
+            Attribute: User-defined UserName
+            </summary>
+        </member>
+        <member name="P:AdaptiveLearningFinal.Models.RegisterModel.Email">
+            <summary>
+            Attribute: User-defined EmailAddress
+            </summary>
+        </member>
+        <member name="P:AdaptiveLearningFinal.Models.RegisterModel.Password">
+            <summary>
+            Attribute: User-defined Password
+            </summary>
+        </member>
+        <member name="P:AdaptiveLearningFinal.Models.RegisterModel.ConfirmPassword">
+            <summary>
+            Attribute: Confirmation of User-defined Password
+            </summary>
+        </member>
+        <member name="P:AdaptiveLearningFinal.Models.RegisterModel.LearningStyleID">
+            <summary>
+            Attribute: Dropdown Learning Style method
+            </summary>
+        </member>
+    </members>
+</doc>

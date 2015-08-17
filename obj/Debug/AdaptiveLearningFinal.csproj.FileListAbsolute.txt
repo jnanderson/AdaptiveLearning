@@ -19,3 +19,4 @@ E:\Johns Files\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\Adap
 E:\Johns Files\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\System.Web.WebPages.Razor.xml
 E:\Johns Files\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\AdaptiveLearningFinal\obj\Debug\AdaptiveLearningFinal.dll
 E:\Johns Files\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\AdaptiveLearningFinal\obj\Debug\AdaptiveLearningFinal.pdb
+E:\Johns Files\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\AdaptiveLearningFinal.XML

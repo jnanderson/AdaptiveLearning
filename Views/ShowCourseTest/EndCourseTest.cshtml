@@ -1,7 +1,7 @@
 ﻿@model AdaptiveLearningFinal.Models.Questions
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "EndTest";
 }
 
 <h2>PreTest</h2>
@@ -9,7 +9,7 @@
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
-@using (Html.BeginForm("Index", "ShowTest", FormMethod.Post))
+@using (Html.BeginForm("Index", "ShowCourseTest", FormMethod.Post))
 {
     
     @Html.ValidationSummary(true)
@@ -64,7 +64,7 @@
     <tr>
         <td style ="border:none">
                    
-           <input type="submit" Value="Next Question"/>
+           <input type="submit" Value="Submit"/>
         </td>
     </tr>
 </table>
