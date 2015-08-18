@@ -9,6 +9,9 @@ using AdaptiveLearningFinal.Models;
 
 namespace AdaptiveLearningFinal.Controllers
 { 
+    /// <summary>
+    /// The ClassController is an administrative controller that provides for the Creation, Edit, Detail, and Delete functions for specific Topics
+    /// </summary>
     public class ClassController : Controller
     {
         private AdaptiveLearningEntities db = new AdaptiveLearningEntities();

@@ -9,6 +9,9 @@ using AdaptiveLearningFinal.Models;
 
 namespace AdaptiveLearningFinal.Controllers
 { 
+    /// <summary>
+    /// The Questions Controller is used to populate the CourseQuestions Table and provide for the functions of Create, Edit, Detail, and Delete for the administrator
+    /// </summary>
     public class QuestionsController : Controller
     {
         private AdaptiveLearningEntities db = new AdaptiveLearningEntities();

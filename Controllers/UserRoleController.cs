@@ -9,6 +9,9 @@ using AdaptiveLearningFinal.Models;
 
 namespace AdaptiveLearningFinal.Controllers
 { 
+    /// <summary>
+    /// UserRole Controller is used to create, edit, detail, and delete the association between the user and their role in the website
+    /// </summary>
     public class UserRoleController : Controller
     {
         private AdaptiveLearningEntities db = new AdaptiveLearningEntities();

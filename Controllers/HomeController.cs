@@ -6,6 +6,9 @@ using System.Web.Mvc;
 
 namespace AdaptiveLearningFinal.Controllers
 {
+    /// <summary>
+    /// The HomeController is the controller for the Home Page of the website
+    /// </summary>
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -15,9 +18,5 @@ namespace AdaptiveLearningFinal.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            return View();
-        }
     }
 }

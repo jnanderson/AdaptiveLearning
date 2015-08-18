@@ -9,6 +9,9 @@ using AdaptiveLearningFinal.Models;
 
 namespace AdaptiveLearningFinal.Controllers
 { 
+    /// <summary>
+    /// Topic Controller is used to create, edit, detail, and delete topics by an administrator
+    /// </summary>
     public class TopicController : Controller
     {
         private AdaptiveLearningEntities db = new AdaptiveLearningEntities();

@@ -9,12 +9,19 @@ using AdaptiveLearningFinal.Models;
 
 namespace AdaptiveLearningFinal.Controllers
 { 
+    /// <summary>
+    /// AssignRoles Controller is an administrative function that allows certain users to control who has what role in the system
+    /// </summary>
     public class AssignRolesController : Controller
     {
         private AdaptiveLearningEntities db = new AdaptiveLearningEntities();
 
         //
         // GET: /AssignRoles/
+        /// <summary>
+        /// Initial ViewResult 
+        /// </summary>
+        /// <returns></returns>
        [Authorize(Roles = "Administrator")]
         public ViewResult Index()
         {
@@ -24,6 +31,11 @@ namespace AdaptiveLearningFinal.Controllers
 
         //
         // GET: /AssignRoles/Details/5
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize(Roles = "Administrator")]
         public ViewResult Details(int id)
         {
@@ -33,6 +45,10 @@ namespace AdaptiveLearningFinal.Controllers
 
         //
         // GET: /AssignRoles/Create
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
@@ -43,7 +59,11 @@ namespace AdaptiveLearningFinal.Controllers
 
         //
         // POST: /AssignRoles/Create
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="usersinrole"></param>
+        /// <returns></returns>
         [HttpPost, Authorize(Roles = "Administrator")]
         public ActionResult Create(UsersInRole usersinrole)
         {
@@ -61,6 +81,11 @@ namespace AdaptiveLearningFinal.Controllers
         
         //
         // GET: /AssignRoles/Edit/5
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
         {
@@ -72,7 +97,11 @@ namespace AdaptiveLearningFinal.Controllers
 
         //
         // POST: /AssignRoles/Edit/5
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="usersinrole"></param>
+        /// <returns></returns>
         [HttpPost, Authorize(Roles = "Administrator")]
         public ActionResult Edit(UsersInRole usersinrole)
         {
@@ -89,6 +118,11 @@ namespace AdaptiveLearningFinal.Controllers
 
         //
         // GET: /AssignRoles/Delete/5
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
@@ -98,7 +132,11 @@ namespace AdaptiveLearningFinal.Controllers
 
         //
         // POST: /AssignRoles/Delete/5
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete"), Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int id)
         {            
@@ -107,7 +145,10 @@ namespace AdaptiveLearningFinal.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

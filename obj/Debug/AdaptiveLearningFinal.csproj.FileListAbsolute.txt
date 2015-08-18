@@ -20,3 +20,25 @@ E:\Johns Files\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\Adap
 E:\Johns Files\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\AdaptiveLearningFinal\obj\Debug\AdaptiveLearningFinal.dll
 E:\Johns Files\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\AdaptiveLearningFinal\obj\Debug\AdaptiveLearningFinal.pdb
 E:\Johns Files\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\AdaptiveLearningFinal.XML
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\AdaptiveLearningFinal.dll
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\AdaptiveLearningFinal.pdb
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\EntityFramework.dll
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\Microsoft.Web.Infrastructure.dll
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\System.Web.Helpers.dll
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\System.Web.Mvc.dll
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\System.Web.Providers.dll
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\System.Web.Razor.dll
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\System.Web.WebPages.Deployment.dll
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\System.Web.WebPages.dll
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\System.Web.WebPages.Razor.dll
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\EntityFramework.xml
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\System.Web.Helpers.xml
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\System.Web.Mvc.xml
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\System.Web.Razor.xml
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\System.Web.WebPages.xml
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\System.Web.WebPages.Deployment.xml
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\System.Web.WebPages.Razor.xml
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\obj\Debug\AdaptiveLearningFinal.csprojResolveAssemblyReference.cache
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\obj\Debug\AdaptiveLearningFinal.dll
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\obj\Debug\AdaptiveLearningFinal.pdb
+E:\Special Projects\AdaptiveLearningFinal\AdaptiveLearningFinal\bin\AdaptiveLearningFinal.XML

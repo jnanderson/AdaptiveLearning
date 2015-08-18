@@ -5,6 +5,9 @@ using System.Web;
 
 namespace AdaptiveLearningFinal.Models
 {
+    /// <summary>
+    /// A model that represents a version of the EvaluationResult Table
+    /// </summary>
     public partial class ResultsModel
     {
         public int ERID { get; set; }
@@ -26,7 +29,9 @@ namespace AdaptiveLearningFinal.Models
        
         
     }
-
+    /// <summary>
+    /// A model that represents a version of the Courses Table
+    /// </summary>
     public partial class CoursesTakenModel
     {
         public int ClassID { get; set; }

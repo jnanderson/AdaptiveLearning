@@ -9,6 +9,9 @@ using AdaptiveLearningFinal.Models;
 
 namespace AdaptiveLearningFinal.Controllers
 { 
+    /// <summary>
+    /// The CourseMaterialController provides for the Creation, Edit, Delete, and Detail functions that will be used to create course content by an administrator
+    /// </summary>
     public class CourseMaterialController : Controller
     {
         private AdaptiveLearningEntities db = new AdaptiveLearningEntities();

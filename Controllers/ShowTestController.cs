@@ -9,6 +9,9 @@ using System.Data.Entity;
 
 namespace AdaptiveLearningFinal.Controllers
 {
+    /// <summary>
+    /// The ShowTestController provides functionality for allowing a user to view the pretest for all of the course
+    /// </summary>
     public class ShowTestController : Controller
     {
         //
@@ -17,10 +20,17 @@ namespace AdaptiveLearningFinal.Controllers
         private static Questions myView = new Questions();
         private static int counter;
        
+        /// <summary>
+        /// Provides the list of questions from each course for the pre-test
+        /// </summary>
+        /// <param name="SelectedItem"></param>
+        /// <returns></returns>
         public ActionResult Index(int SelectedItem)
         {
-            
+            //counter is used to keep track of the questions answered
             counter = 0;
+
+            //query takes the first question from each group of questions and uses those questions in the pre-test to determine what courses the student needs to take
             var query = (from cq in db.CourseQuestions
                          join c in db.Courses on cq.ClassID equals c.ClassID
                          where c.TopicId == SelectedItem
@@ -57,20 +67,27 @@ namespace AdaptiveLearningFinal.Controllers
                 return RedirectToAction("Index", "ChooseCourse");
             }
         }
-
+        /// <summary>
+        /// Post method that takes the responses from the Index view and updates the database and serves the next question in the list
+        /// </summary>
+        /// <param name="Answer"></param>
+        /// <param name="id"></param>
+        /// <param name="SelectedItem"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Index(string Answer, int id, int SelectedItem)
         {
-             
+            //Function that updates the CourseResult table with the user Answer and ClassID
              UpdateTestResults(myView.id, Answer);
 
+             //Requery for the ClassID
              var query = (from cq in db.CourseQuestions
                           join c in db.Courses on cq.ClassID equals c.ClassID
                           where c.TopicId == SelectedItem
                           group cq by new { ClassID = cq.ClassID } into g
                           select
                              g.OrderBy(e => e.ClassID).FirstOrDefault()).ToList();
-
+             //Requery using the ClassID to get the questions for the test
              var test = (from q in query
                          select new Questions()
                          {
@@ -88,18 +105,22 @@ namespace AdaptiveLearningFinal.Controllers
                              CourseResults = q.CourseResults
                          }).ToList();
 
+             //Increment of counter to move to the next question
              counter++;
 
+             //Check of counter to provide the correct button at the end of the View (Next Question)
              if (counter + 1 < test.Count())
              {
                  myView.id = test[counter].QuestionID;
                  return View(test[counter]);
              }
+             //Check of counter to provide the correct button at the end of the View (Submit)
              else if (test.Count() == counter + 1)
              {
                  myView.id = test[counter].QuestionID;
                  return View("EndTest", test[counter]);
              }
+             //Check to send the user to the Course selection page, to see which courses they are required to take
              else if (test.Count() < counter + 1)
              {
                  return RedirectToAction("PreTestShowAvailableClasses", "ChooseCourse", new { SelectedItem = SelectedItem });
@@ -108,7 +129,11 @@ namespace AdaptiveLearningFinal.Controllers
              return View();
         }
 
-
+        /// <summary>
+        /// Function that Updates the CourseResult table with whether the answer is correct or not.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="Answer"></param>
         public void UpdateTestResults(int id, string Answer)
         {
             var query = (from c in db.CourseQuestions

@@ -7,14 +7,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AdaptiveLearningFinal.Models
 {
+    /// <summary>
+    /// This is a model that represents a version of the CourseResult Table
+    /// </summary>
     public partial class Questions
     {
-
+            /// <summary>
+            /// Constructor for Questions class
+            /// </summary>
             public Questions()
             {
                 this.CourseResults = new HashSet<CourseResult>();
             }
-
+            
             public int QuestionID { get; set; }
             public Nullable<int> QuestionLevel { get; set; }
             public string QuestionAnswerA { get; set; }
@@ -36,8 +41,14 @@ namespace AdaptiveLearningFinal.Models
         
     }
 
+    /// <summary>
+    /// This is the model that represents a version of the Topic Table
+    /// </summary>
     public partial class ChooseCourse
     {
+        /// <summary>
+        /// Constructor for ChooseCourse class
+        /// </summary>
         public ChooseCourse()
         {
             this.Courses = new HashSet<Course>();
@@ -54,7 +65,9 @@ namespace AdaptiveLearningFinal.Models
 
         
     }
-
+    /// <summary>
+    /// This is the model that represents a version of the CourseResult Table
+    /// </summary>
     public partial class TestResults
     {
         public int CourseResultID { get; set; }
@@ -66,8 +79,14 @@ namespace AdaptiveLearningFinal.Models
         public virtual User User { get; set; }
     }
 
+    /// <summary>
+    /// This is the model that represents a version of the Courses Table
+    /// </summary>
     public partial class ClassModel
     {
+        /// <summary>
+        /// Constructor for the ClassModel class
+        /// </summary>
         public ClassModel()
         {
             this.CourseMaterials = new HashSet<CourseMaterial>();
@@ -88,6 +107,9 @@ namespace AdaptiveLearningFinal.Models
         public string SelectedItem { get; set; }
     }
 
+    /// <summary>
+    /// This is a model that represents a version of the CourseMaterial Table
+    /// </summary>
     public partial class LearningModel
     {
         public int MaterialID { get; set; }

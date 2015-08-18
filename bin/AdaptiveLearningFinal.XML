@@ -4,10 +4,215 @@
         <name>AdaptiveLearningFinal</name>
     </assembly>
     <members>
+        <member name="T:AdaptiveLearningFinal.Controllers.AccountController">
+            <summary>
+            Account Controller controls all of the User and Authentication operations for the website
+            </summary>
+        </member>
+        <member name="F:AdaptiveLearningFinal.Controllers.AccountController.db">
+            <summary>
+            Instantiation of the Database Model AdaptiveLearningEntities
+            </summary>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.AccountController.LogOn">
+            <summary>
+            
+            </summary>
+            <returns>View</returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.AccountController.LogOn(AdaptiveLearningFinal.Models.LogOnModel,System.String)">
+            <summary>
+            Logon Action that will allow the user to access the website
+            </summary>
+            <param name="model"></param>
+            <param name="returnUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.AccountController.LogOff">
+            <summary>
+            Releases Session and Logs User off the system
+            </summary>
+            <returns>Home</returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.AccountController.Register">
+            <summary>
+            Dynamic creation of Learning Styles dropdown
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.AccountController.Register(AdaptiveLearningFinal.Models.RegisterModel)">
+            <summary>
+            Populates database with user-defined data, and creates a new session for the user
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.AccountController.ChangePassword(AdaptiveLearningFinal.Models.ChangePasswordModel)">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Controllers.AssignRolesController">
+            <summary>
+            AssignRoles Controller is an administrative function that allows certain users to control who has what role in the system
+            </summary>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.AssignRolesController.Index">
+            <summary>
+            Initial ViewResult 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.AssignRolesController.Details(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.AssignRolesController.Create">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.AssignRolesController.Create(AdaptiveLearningFinal.Models.UsersInRole)">
+            <summary>
+            
+            </summary>
+            <param name="usersinrole"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.AssignRolesController.Edit(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.AssignRolesController.Edit(AdaptiveLearningFinal.Models.UsersInRole)">
+            <summary>
+            
+            </summary>
+            <param name="usersinrole"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.AssignRolesController.Delete(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.AssignRolesController.DeleteConfirmed(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.AssignRolesController.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Controllers.ChooseCourseController">
+            <summary>
+            The ChooseCourse controller controls the functions of choosing a topic and choosing a course
+            </summary>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.ChooseCourseController.Index(AdaptiveLearningFinal.Models.ChooseCourse)">
+            <summary>
+            This returns both the test view and the show available classes view
+            </summary>
+            <param name="viewModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.ChooseCourseController.PreTestShowAvailableClasses(System.Int32)">
+            <summary>
+            This is the controller that will be used if a pre-test has not been completed.
+            </summary>
+            <param name="SelectedItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.ChooseCourseController.ShowAvailableClasses(System.Int32)">
+            <summary>
+            This ActionResult shows the available classes to the student based on their answers to the pre-test
+            </summary>
+            <param name="SelectedItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.ChooseCourseController.ShowAvailableClasses(AdaptiveLearningFinal.Models.ClassModel)">
+            <summary>
+            This ActionResult shows the available classes to the student based on their answers to the pre-test
+            </summary>
+            <param name="viewModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.ChooseCourseController.ClassView(System.Int32)">
+            <summary>
+            ClassView ActionResult provides the controls for the coursework page (i.e. Video URL and Website URLs to be served to the user via the database
+            </summary>
+            <param name="selectedItem"></param>
+            <returns>View(viewModel)</returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.ChooseCourseController.UpdateTestResults(System.Int32)">
+            <summary>
+            Function that updates the Test Results based on the User's selections
+            </summary>
+            <param name="SelectedItem"></param>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.ChooseCourseController.GetCourses(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="SelectedItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.ChooseCourseController.GetMaterial(System.Int32)">
+            <summary>
+            Provides the user with the correct type of Learning method for their coursework
+            </summary>
+            <param name="SelectedItem"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Controllers.ClassController">
+            <summary>
+            The ClassController is an administrative controller that provides for the Creation, Edit, Detail, and Delete functions for specific Topics
+            </summary>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Controllers.CourseMaterialController">
+            <summary>
+            The CourseMaterialController provides for the Creation, Edit, Delete, and Detail functions that will be used to create course content by an administrator
+            </summary>
+        </member>
         <member name="T:AdaptiveLearningFinal.Controllers.EvaluationResultsController">
             <summary>
              This class performs pulls and processes the results from the Course Test, and calculates the percentage correct for the user
             </summary>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.EvaluationResultsController.Index">
+            <summary>
+            The Index ActionResult serves to provide a list of courses that a user has taken a test, and will populate a dropdown list with those courses
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.EvaluationResultsController.Index(AdaptiveLearningFinal.Models.ClassModel)">
+            <summary>
+            Redirects the posted data to the ViewResults action in the EvaluationResults controller with the selected ClassID
+            </summary>
+            <param name="myView"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.EvaluationResultsController.ViewResults(System.Int32)">
+            <summary>
+            The ViewResults ActionResult serves to calculate statistics and control the courses that are available to be selected
+            </summary>
+            <param name="SelectedItem"></param>
+            <returns></returns>
         </member>
         <member name="M:AdaptiveLearningFinal.Controllers.EvaluationResultsController.AfterTest(System.Int32)">
             <summary>
@@ -21,6 +226,110 @@
             Method Calculates the number of correct answers divided by the total number of answers.  This is a cumulative affect
             </summary>
             <param name="SelectedItem"></param>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.EvaluationResultsController.UpdateDatabase(System.Collections.Generic.List{AdaptiveLearningFinal.Models.ResultsModel})">
+            <summary>
+            Function that will update the CourseResult table when the percentage correct of a course test is greater than 69.  This will set the Correct Attribute = true and the course will not show up in the drop down anymore.
+            </summary>
+            <param name="query"></param>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Controllers.HomeController">
+            <summary>
+            The HomeController is the controller for the Home Page of the website
+            </summary>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Controllers.QuestionsController">
+            <summary>
+            The Questions Controller is used to populate the CourseQuestions Table and provide for the functions of Create, Edit, Detail, and Delete for the administrator
+            </summary>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Controllers.ShowCourseTestController">
+            <summary>
+            The ShowTestController provides functionality for allowing a user to view the test for the course
+            </summary>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.ShowCourseTestController.Index(System.Int32)">
+            <summary>
+            Provides a list of the questions that will be asked to the user based on the course that they have selected
+            </summary>
+            <param name="SelectedItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.ShowCourseTestController.Index(System.String,System.Int32,System.Int32)">
+            <summary>
+            Post method that takes the responses from the Index view and updates the database and serves the next question in the list
+            </summary>
+            <param name="Answer"></param>
+            <param name="id"></param>
+            <param name="SelectedItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.ShowCourseTestController.UpdateTestResults(System.Int32,System.String)">
+            <summary>
+            Function that Updates the EvaluationResult table with whether the answer is correct or not.
+            </summary>
+            <param name="id"></param>
+            <param name="Answer"></param>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Controllers.ShowTestController">
+            <summary>
+            The ShowTestController provides functionality for allowing a user to view the pretest for all of the course
+            </summary>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.ShowTestController.Index(System.Int32)">
+            <summary>
+            Provides the list of questions from each course for the pre-test
+            </summary>
+            <param name="SelectedItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.ShowTestController.Index(System.String,System.Int32,System.Int32)">
+            <summary>
+            Post method that takes the responses from the Index view and updates the database and serves the next question in the list
+            </summary>
+            <param name="Answer"></param>
+            <param name="id"></param>
+            <param name="SelectedItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Controllers.ShowTestController.UpdateTestResults(System.Int32,System.String)">
+            <summary>
+            Function that Updates the CourseResult table with whether the answer is correct or not.
+            </summary>
+            <param name="id"></param>
+            <param name="Answer"></param>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Controllers.TopicController">
+            <summary>
+            Topic Controller is used to create, edit, detail, and delete topics by an administrator
+            </summary>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Controllers.UserRoleController">
+            <summary>
+            UserRole Controller is used to create, edit, detail, and delete the association between the user and their role in the website
+            </summary>
+        </member>
+        <member name="T:AdaptiveLearningFinal.MvcApplication">
+            <summary>
+            This is the application class, which provides teh routing information and the application start data
+            </summary>
+        </member>
+        <member name="M:AdaptiveLearningFinal.MvcApplication.RegisterGlobalFilters(System.Web.Mvc.GlobalFilterCollection)">
+            <summary>
+            Function that Registers filters for the website
+            </summary>
+            <param name="filters"></param>
+        </member>
+        <member name="M:AdaptiveLearningFinal.MvcApplication.RegisterRoutes(System.Web.Routing.RouteCollection)">
+            <summary>
+            Function that registers the forms that the URLs will take
+            </summary>
+            <param name="routes"></param>
+        </member>
+        <member name="M:AdaptiveLearningFinal.MvcApplication.Application_Start">
+            <summary>
+            Function that starts the application using LocalDB by default
+            </summary>
         </member>
         <member name="T:AdaptiveLearningFinal.Models.ChangePasswordModel">
             <summary>
@@ -90,6 +399,56 @@
         <member name="P:AdaptiveLearningFinal.Models.RegisterModel.LearningStyleID">
             <summary>
             Attribute: Dropdown Learning Style method
+            </summary>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Models.Questions">
+            <summary>
+            This is a model that represents a version of the CourseResult Table
+            </summary>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Models.Questions.#ctor">
+            <summary>
+            Constructor for Questions class
+            </summary>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Models.ChooseCourse">
+            <summary>
+            This is the model that represents a version of the Topic Table
+            </summary>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Models.ChooseCourse.#ctor">
+            <summary>
+            Constructor for ChooseCourse class
+            </summary>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Models.TestResults">
+            <summary>
+            This is the model that represents a version of the CourseResult Table
+            </summary>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Models.ClassModel">
+            <summary>
+            This is the model that represents a version of the Courses Table
+            </summary>
+        </member>
+        <member name="M:AdaptiveLearningFinal.Models.ClassModel.#ctor">
+            <summary>
+            Constructor for the ClassModel class
+            </summary>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Models.LearningModel">
+            <summary>
+            This is a model that represents a version of the CourseMaterial Table
+            </summary>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Models.ResultsModel">
+            <summary>
+            A model that represents a version of the EvaluationResult Table
+            </summary>
+        </member>
+        <member name="T:AdaptiveLearningFinal.Models.CoursesTakenModel">
+            <summary>
+            A model that represents a version of the Courses Table
             </summary>
         </member>
     </members>

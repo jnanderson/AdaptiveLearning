@@ -9,13 +9,22 @@ using AdaptiveLearningFinal.Models;
 
 namespace AdaptiveLearningFinal.Controllers
 {
+    /// <summary>
+    /// Account Controller controls all of the User and Authentication operations for the website
+    /// </summary>
     public class AccountController : Controller
     {
+        /// <summary>
+        /// Instantiation of the Database Model AdaptiveLearningEntities
+        /// </summary>
         private AdaptiveLearningEntities db = new AdaptiveLearningEntities();
 
         //
         // GET: /Account/LogOn
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>View</returns>
         public ActionResult LogOn()
         {
             return View();
@@ -23,7 +32,12 @@ namespace AdaptiveLearningFinal.Controllers
 
         //
         // POST: /Account/LogOn
-
+        /// <summary>
+        /// Logon Action that will allow the user to access the website
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
@@ -39,14 +53,9 @@ namespace AdaptiveLearningFinal.Controllers
                     }
                     else
                     {
-                        if (User.IsInRole("Administrator"))
-                        {
-                            return RedirectToAction("Index", "Home");
-                        }
-                        else
-                        {
-                            return RedirectToAction("Index", "ChooseCourse");
-                        }
+
+                        return RedirectToAction("Index", "Home");
+                        
                     }
                 }
                 else
@@ -61,7 +70,10 @@ namespace AdaptiveLearningFinal.Controllers
 
         //
         // GET: /Account/LogOff
-
+        /// <summary>
+        /// Releases Session and Logs User off the system
+        /// </summary>
+        /// <returns>Home</returns>
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
@@ -72,7 +84,10 @@ namespace AdaptiveLearningFinal.Controllers
        
         //
         // GET: /Account/Register
-
+        /// <summary>
+        /// Dynamic creation of Learning Styles dropdown
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Register()
         {
             ViewBag.LearningStyleId = new SelectList(db.LearningStyles, "LearningStyleID", "LearningStyleName");
@@ -81,7 +96,11 @@ namespace AdaptiveLearningFinal.Controllers
 
         //
         // POST: /Account/Register
-
+        /// <summary>
+        /// Populates database with user-defined data, and creates a new session for the user
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Register(RegisterModel model)
         {
@@ -121,7 +140,11 @@ namespace AdaptiveLearningFinal.Controllers
 
         //
         // POST: /Account/ChangePassword
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost]
         public ActionResult ChangePassword(ChangePasswordModel model)
